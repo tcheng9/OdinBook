@@ -17,4 +17,13 @@ router.get('/', function(req, res, next) {
 router.post('/signup', auth_controller.signup_post)
 // router.post('/createpost', post_controller.create_post)
 
+
+/* POST user login */
+router.post('/login', auth_controller.login_post);
+
+
+/*GET route to check jwt token */
+router.get('/verify_jwt', auth_controller.verify_jwt);
+
+
 module.exports = router;
