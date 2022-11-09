@@ -13,6 +13,14 @@ const Schema = mongoose.Schema;
 const session = require("express-session");
 
 
+//CORS
+const cors=require("cors");
+const corsOptions ={
+   origin:'*', 
+   credentials:true,            //access-control-allow-credentials:true
+   optionSuccessStatus:200,
+}
+
 //Routes import
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -26,6 +34,9 @@ require("dotenv").config();
 
 
 var app = express();
+
+//Use CORS
+app.use(cors(corsOptions)) // Use this after the variable declaration
 
 //Mongoose setup:
 
