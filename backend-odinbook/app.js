@@ -46,11 +46,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', authRouter);
+app.use('/', indexRouter);
+app.use('/auth', authRouter);
 app.use('/users', usersRouter);
 app.use('/profile', profileRouter);
 app.use('/showpage', showPageRouter);
-app.use('/signup', signupRouter);
+// app.use('/signup', signupRouter);
 app.use('/timeline', timelineRouter);
 app.use('/posts', postRouter);
 
