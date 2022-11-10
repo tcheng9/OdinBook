@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+var findOrCreate = require('mongoose-findorcreate')
 
 const UserSchema = new Schema(
     {
@@ -11,5 +12,5 @@ const UserSchema = new Schema(
     }
 )
 
-
+var User = UserSchema.plugin(findOrCreate);
 module.exports = mongoose.model('user', UserSchema);

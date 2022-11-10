@@ -5,12 +5,13 @@ import App from "../App";
 
 import Home from "./home"
 import Signup from "./signup"
+import Login from "./login";
 
 const RouteSwitch = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="/" element={[<App />, <Login />]} />
         
         <Route path = "/home" element = {<Home />} />
         <Route path = "/signup" element = {<Signup />} />

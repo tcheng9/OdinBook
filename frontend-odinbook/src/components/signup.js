@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
 import {useState} from 'react';
-
+import {useNavigate} from "react-router-dom";
 
 function Signup(){
-    
+    const navigate = useNavigate();
+
+    const navigateLogin = () => {
+        navigate('/');
+    }
+  
+
     //Setting signup data
     const [data, setData] = useState({
         username: '',
@@ -38,6 +43,8 @@ function Signup(){
         .then((data) => {
             console.log(data);
         })
+
+        navigateLogin();
     }
 
 
