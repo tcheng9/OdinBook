@@ -11,6 +11,7 @@ const FacebookStrategy = require("passport-facebook").Strategy;
 const bcrypt = require('bcrypt')
 const Schema = mongoose.Schema;
 const session = require("express-session");
+const User = require('./models/user');
 
 
 //CORS
@@ -33,7 +34,26 @@ var postRouter = require('./routes/createPost');
 require("dotenv").config();
 
 
+passport.serializeUser(function(user, cb) {
+  process.nextTick(function() {
+    cb(null, { id: user.id, username: user.username, name: user.name });
+  });
+});
+
+passport.deserializeUser(function(user, cb) {
+  process.nextTick(function() {
+    return cb(null, user);
+  });
+});
+
 var app = express();
+
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false,
+}));
+
 
 //Use CORS
 app.use(cors(corsOptions)) // Use this after the variable declaration
@@ -56,6 +76,36 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+//Establish facebook session
+
+passport.use(new FacebookStrategy({
+  clientID: process.env.CLIENT_ID_FB,
+  clientSecret: process.env.CLIENT_SECRET_FB,
+  callbackURL: "http://localhost:3000/auth/facebook/callback"
+},
+function(accessToken, refreshToken, profile, cb) {
+  User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+    return cb(err, user);
+  });
+}
+));
+
+app.get('/auth/facebook',
+  passport.authenticate('facebook'));
+
+app.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
+
+
+
+
+app.use(passport.authenticate('session'));
+
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
@@ -92,5 +142,5 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 
-const PORT = 4000;
+const PORT = 5000;
 app.listen(PORT, () => console.log(`Server is running on ${PORT}`));
