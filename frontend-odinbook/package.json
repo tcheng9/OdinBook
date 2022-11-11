@@ -36,15 +36,7 @@
       "last 1 safari version"
     ]
   }
-  ,
-  "proxy": {
-    "/facebook": {
-      "target": "http://localhost:5000/auth/facebook"
-    },
-    "/auth": {
-      "target": "http://localhost:5000/auth/facebook"
-    }
-  }
+ 
   
   
 }

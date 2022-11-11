@@ -6,8 +6,8 @@ function Login(){
 
     const navigate = useNavigate();
 
-    const navigateHome = () => {
-        navigate('/home');
+    const navigateTimeline = () => {
+        navigate('/timeline');
     }
 
 
@@ -43,9 +43,11 @@ function Login(){
             localStorage.setItem('token', data.accessToken);
             })
             
-            navigateHome();
+            navigateTimeline();
         }
     return (
+
+      <div>
         <form id = "login">
           <h1> Login Form </h1>
           <label htmlFor = "username"> Username: </label> <br/>
@@ -56,6 +58,11 @@ function Login(){
 
           <button onClick = {loginSubmit}> Login </button> 
         </form>
+
+        <a href = "/signup"> Sign up</a>
+
+      </div>
+        
     )
 }
 
