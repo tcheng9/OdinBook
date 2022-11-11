@@ -57,7 +57,7 @@ app.use(session({
 
 //Use CORS
 app.use(cors(corsOptions)) // Use this after the variable declaration
-
+// app.use(cors({origin: 'http://localhost:3001'}));
 //Mongoose setup:
 
 const mongoPw = process.env.MONGOPW;
@@ -80,15 +80,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Establish facebook session
 
 passport.use(new FacebookStrategy({
-  clientID: process.env.CLIENT_ID_FB,
-  clientSecret: process.env.CLIENT_SECRET_FB,
-  callbackURL: "http://localhost:3000/auth/facebook/callback"
-},
-function(accessToken, refreshToken, profile, cb) {
-  User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-    return cb(err, user);
-  });
-}
+    clientID: process.env.CLIENT_ID_FB,
+    clientSecret: process.env.CLIENT_SECRET_FB,
+    callbackURL: "http://localhost:3000/auth/facebook/callback",
+    profileFields: ['id', 'displayName', 'email']
+  },
+  function(accessToken, refreshToken, profile, cb) {
+    console.log(profile);
+    User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+      return cb(err, user);
+    });
+  }
 ));
 
 app.get('/auth/facebook',
@@ -98,7 +100,8 @@ app.get('/auth/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect('/');
+  
+    res.send({user: req.user});
   });
 
 
