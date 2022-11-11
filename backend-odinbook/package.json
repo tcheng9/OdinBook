@@ -26,4 +26,5 @@
     "passport-facebook": "^3.0.0",
     "passport-local": "^1.0.0"
   }
+  
 }
