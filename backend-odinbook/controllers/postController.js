@@ -9,6 +9,15 @@ var Post = require('../models/post');
 //     res.send('placeholder')
 // }
 
+exports.get_post = async (req, res, next) => {
+    try {
+        const posts = await Post.find();
+        res.json(posts);
+    } catch (err) {
+        res.status(500).json({message: err.message});
+    }
+}
+
 
 exports.make_post = async (req, res, next) => {
     const post = new Post({
@@ -28,6 +37,3 @@ exports.make_post = async (req, res, next) => {
     }
 }
 
-exports.get_post = async (req, res, next) => {
-    res.send('get post');
-}

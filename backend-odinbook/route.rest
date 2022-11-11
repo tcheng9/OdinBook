@@ -30,10 +30,17 @@ POST http://localhost:4000/posts/create
 Content-Type: application/json
 
 {
-    "title": "post1",
+    "title": "post2",
     "authorId": "placeholder",
     "commentId": "placeholder",
-    "message": "post1",
+    "message": "post2",
     "likes": "[]"
     
 }
+
+
+###
+GET http://localhost:4000/posts
+
+
+###
