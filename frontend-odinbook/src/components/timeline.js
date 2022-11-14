@@ -1,6 +1,8 @@
 import React from 'react';
 import {useEffect, useState} from 'react';
 import "./timeline.css";
+import CreateComment from './createComment';
+
 
 const Timeline = () => {
 
@@ -44,14 +46,15 @@ const Timeline = () => {
                     <div key = {data._id}>
                         <li className = "postItem"> {data.title} </li>
                          <li className = "postItem"> {data._id} </li>
-                         <form id = "comment">
+                         {/* <form id = "comment">
                             <h1> comment Form </h1>
 
                             <label htmlFor = "comment"> Comment: </label> <br/>
                             <input onChange={(e) => handleComment(e)} value = {comment.comment} type = "text" id = "comment" name = "comment"/> <br/>
 
                             <button onClick = {commentSubmit}> Login </button> 
-                        </form>
+                        </form> */}
+                        <CreateComment postId = {data._id}/>
                     </div>
                     
                 )
