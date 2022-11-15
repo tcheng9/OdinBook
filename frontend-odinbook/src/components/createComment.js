@@ -12,13 +12,36 @@ const CreateComment = ({postId}) => {
         const postId = e.target.id;
         
         const token = localStorage.getItem('token');
-        console.log(comment);
+        //Decoding JWT token
+        const decoded = jwt_decode(token);
+        console.log("Comment:" + comment);
         console.log('post id:' + postId);
+        console.log('user id:' + decoded.id);
         // console.log(localStorage.getItem('token'));
 
-        const decoded = jwt_decode(token);
+        
 
         console.log(decoded);
+
+        try {
+            const fetchSettings = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // 'auth-token': JSON.parse(localStorage.getItem('token'))
+                },
+                body: JSON.stringify({
+                    comment: comment,
+                    postId: postId,
+                    userId: decoded.id
+                })
+            }
+
+           const response = fetch("http://localhost:4000/comments/send", fetchSettings);
+
+        } catch (err){
+            console.log(err);
+        }
     }
 
 

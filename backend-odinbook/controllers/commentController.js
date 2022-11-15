@@ -10,9 +10,9 @@ exports.get_comments = async (req, res, next) => {
 
 exports.post_comments = async(req, res,next) => {
     const comment = new Comment({
-        text: "test",
-        authorId: "placeholder",
-        postId: "placeholder",
+        text: req.body.text,
+        authorId: req.body.userId,
+        postId: req.body.postId,
     })
 
     try {
