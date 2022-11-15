@@ -44,3 +44,15 @@ GET http://localhost:4000/posts
 
 
 ###
+GET http://localhost:4000/comments
+
+
+###
+POST http://localhost:4000/comments/send
+Content-Type: application/json
+
+{
+    "text": "test1",
+    "authorId": "test1",
+    "postId": '"test1"
+}

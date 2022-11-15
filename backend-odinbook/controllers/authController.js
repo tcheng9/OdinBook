@@ -39,7 +39,10 @@ exports.login_post = async(req, res, next) => {
     
     try {
         if(await bcrypt.compare(req.body.password, users[0].password)){
-            const currUser = {username: users[0].username}
+            const currUser = {
+                username: users[0].username,
+                // id: req.user.id,
+            }
             
             const accessToken = jwt.sign(currUser, process.env.ACCESS_TOKEN_SECRET);
             

@@ -31,6 +31,7 @@ var showPageRouter = require('./routes/showPage');
 var signupRouter = require('./routes/signup');
 var timelineRouter = require('./routes/timeline');
 var postRouter = require('./routes/createPost');
+var commentRouter = require('./routes/comment');
 require("dotenv").config();
 
 
@@ -118,6 +119,8 @@ app.use('/showpage', showPageRouter);
 // app.use('/signup', signupRouter);
 app.use('/timeline', timelineRouter);
 app.use('/posts', postRouter);
+app.use('/comments', commentRouter);
+
 
 //Helper function for logging in
 app.use(function(req, res, next) {
