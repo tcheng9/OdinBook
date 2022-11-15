@@ -9,7 +9,7 @@ var comment_controller = require('../controllers/commentController');
 router.get('/', comment_controller.get_comments);
 
 /*POST a comment*/
-router.post('/send', comment_controller.post_comments);
+router.post('/create', comment_controller.post_comments);
 
 
 module.exports = router;

@@ -45,7 +45,11 @@ GET http://localhost:4000/posts
 
 ###
 GET http://localhost:4000/comments
+Content-Type: application/json
 
+{
+    "postId": "636e94d872a6e98ed806603e"
+}
 
 ###
 POST http://localhost:4000/comments/send
@@ -54,5 +58,5 @@ Content-Type: application/json
 {
     "text": "test1",
     "authorId": "test1",
-    "postId": '"test1"
+    "postId": "test1"
 }

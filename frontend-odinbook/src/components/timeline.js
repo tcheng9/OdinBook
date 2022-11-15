@@ -2,7 +2,7 @@ import React from 'react';
 import {useEffect, useState} from 'react';
 import "./timeline.css";
 import CreateComment from './createComment';
-
+import Comment from "./comment";
 
 const Timeline = () => {
 
@@ -40,7 +40,7 @@ const Timeline = () => {
             <h1> Hello from timeline </h1>    
             <ol>
 
-           
+           {/* Mapping through post data and displaying each individual post */}
             {postData.map((data) => {
                 return (
                     <div key = {data._id}>
@@ -55,6 +55,7 @@ const Timeline = () => {
                             <button onClick = {commentSubmit}> Login </button> 
                         </form> */}
                         <CreateComment postId = {data._id}/>
+                        <Comment postId = {data._id} />
                     </div>
                     
                 )

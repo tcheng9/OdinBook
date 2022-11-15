@@ -5,7 +5,16 @@ var Comment = require('../models/comment');
 
 
 exports.get_comments = async (req, res, next) => {
-    res.send('get comments API call');
+    // const idReturn = Comment.findOne({postId: req.body.username}, '').exec()
+    Comment.findOne({postId: req.body.postId}, function(err, result){
+        try{
+            res.status(200).json(result)
+        } catch (err) {
+            res.status(401).json({message: err.message});
+        }
+     })
+
+    
 } 
 
 exports.post_comments = async(req, res,next) => {
