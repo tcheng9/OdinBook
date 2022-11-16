@@ -1,35 +1,60 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import jwt_decode from "jwt-decode";
+import {useState} from "react";
 
 const Comment = ({postId}) => {
 
-    const handleGetAllComments = (e) => {
-        e.preventDefault();
+        const [fetchData, setFetchData] = useState([]);
 
-        try{
-            const fetchSettings = {
-                method: "GET",
-                headers:{
-                    'Content-Type': 'application/json'
+        const handleGetAllComments = () => {
+            try{
+                const fetchSettings = {
+                    method: "GET",
+                    headers:{
+                        'Content-Type': 'application/json'
+                    }
+                    
                 }
-                
+
+                fetch(`http://localhost:4000/comments?postId=${postId}`, fetchSettings)
+                .then(response => response.json())
+                .then(data => {
+                    setFetchData(data);
+                    console.log(data);
+                    // console.log(fetchData);
+                });
+
+
+            } catch (err){
+                console.log(err);
             }
-
-            fetch("http://localhost:4000/comments", fetchSettings)
-            .then(response => response.json())
-            .then(data => console.log(data));
-
-
-        } catch (err){
-            console.log(err);
+    
         }
-    }
+        
+        useEffect(() => {
+            handleGetAllComments();
+        }, [])
 
     return (
         <div>
             <h1>  Testing comnnection </h1>
             <h1> {postId} </h1> 
-            <button onClick = {handleGetAllComments}> Get comment</button>
+            
+            <div>
+                <h1> Comments: </h1>
+                <ol> 
+                    {
+                        fetchData.map((data) => {
+                            return (
+                                <div>
+                                    <li className = "commentItem"> {data.text}</li>
+                                </div>
+                            )
+                        })
+                        
+                    }
+                </ol>
+            </div>
         </div>
     )
 };

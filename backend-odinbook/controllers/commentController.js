@@ -5,8 +5,11 @@ var Comment = require('../models/comment');
 
 
 exports.get_comments = async (req, res, next) => {
-    // const idReturn = Comment.findOne({postId: req.body.username}, '').exec()
-    Comment.findOne({postId: req.body.postId}, function(err, result){
+    
+    
+    let postId = req.query.postId 
+    
+    Comment.find({postId: postId}, function(err, result){
         try{
             res.status(200).json(result)
         } catch (err) {
