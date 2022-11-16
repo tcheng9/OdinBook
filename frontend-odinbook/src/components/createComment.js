@@ -1,12 +1,18 @@
 import React from "react";
 import {useEffect} from "react";
 import jwt_decode from "jwt-decode";
-
+import {useNavigate} from "react-router-dom";
 
 const CreateComment = ({postId}) => {
+    const navigate = useNavigate();
+
+    const navigateTimeline = () => {
+        navigate('/timeline');
+    }
+
 
     const handleCommentCreate = (e) => {
-        e.preventDefault();
+        
         const formData = new FormData(e.target);
         const comment = formData.get('comment');
         const postId = e.target.id;
@@ -38,10 +44,11 @@ const CreateComment = ({postId}) => {
             }
 
             fetch("http://localhost:4000/comments/create", fetchSettings);
-           
+            
         } catch (err){
             console.log(err);
         }
+        navigateTimeline();
     }
 
 
@@ -50,7 +57,7 @@ const CreateComment = ({postId}) => {
             
             <form onSubmit={(e) => handleCommentCreate(e)} id={postId} className = "commentForm">
                 <input name = "comment" type = "text" className = "commentInput"/>
-                <button className = "commentButton"> Send </button>
+                <button className = "commentButton"> Comment Send </button>
             </form>
         </div>
     )
