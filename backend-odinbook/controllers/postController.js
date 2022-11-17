@@ -37,3 +37,30 @@ exports.make_post = async (req, res, next) => {
     }
 }
 
+// details ofa specific post
+exports.get_details = (req, res, next) => {
+    res.send(req.params.id);
+}
+
+//GET like functon
+exports.get_likes = (req, res,next) => {
+    res.send(req.params.id);
+}
+
+//POST like function
+exports.post_likes = (req, res, next) => {
+    let userId = "636c187091bda9498a3f5a20"
+    let postId = req.params.id;
+
+    Post.findByIdAndUpdate(postId, {$push: {likes: [userId]}}, {
+        function(err, result) {
+            if (err, result) {
+                res.send(err);
+            } else {
+                res.send("working");
+            }
+        }
+    })
+    
+    
+}

@@ -60,3 +60,12 @@ Content-Type: application/json
     "authorId": "test1",
     "postId": "test1"
 }
+
+
+###
+
+GET http://localhost:4000/posts/636e94d872a6e98ed806603e/likes
+
+###
+
+POST http://localhost:4000/posts/636e94d872a6e98ed806603e/likes

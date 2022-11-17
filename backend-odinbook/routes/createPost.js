@@ -10,4 +10,15 @@ router.get('/', post_controller.get_post);
 
 router.post('/create', post_controller.make_post)
 
+/* GET info of a specific post */
+
+router.get('/:id', post_controller.get_details);
+
+/* GET likes for a  specfici post; */
+router.get('/:id/likes', post_controller.get_likes);
+
+/* POST likes for a specific post */ 
+router.post('/:id/likes', post_controller.post_likes);
+
+
 module.exports = router;
