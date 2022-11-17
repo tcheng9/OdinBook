@@ -44,22 +44,32 @@ exports.get_details = (req, res, next) => {
 
 //GET like functon
 exports.get_likes = (req, res,next) => {
-    res.send(req.params.id);
+    let postId = req.params.postId;
+
+    Post.findById(postId, function(err, data) {
+        if (err){
+            res.status(401).json({message: err})
+        } else {
+            res.status(201).json(data);
+        }
+    })
+
 }
 
 //POST like function
 exports.post_likes = (req, res, next) => {
-    let userId = "636c187091bda9498a3f5a20"
-    let postId = req.params.id;
+    // let userId = req.params.userId
+    let userId = "test5asdad";
+    let postId = req.params.postId;
 
-    Post.findByIdAndUpdate(postId, {$push: {likes: [userId]}}, {
-        function(err, result) {
-            if (err, result) {
-                res.send(err);
-            } else {
-                res.send("working");
-            }
+    Post.findByIdAndUpdate(postId, {"$push": {likes: [userId]}}, function(err, data) {
+        if (err){
+            throw err;
+        } else {
+            res.status(201).json({message: "sucess" + userId});
         }
+            
+        
     })
     
     

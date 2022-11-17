@@ -12,7 +12,7 @@ const PostCreate = () => {
 
     const [formData, setFormData] = useState({
         title: '',
-        authorId: '',
+        authorId:'',
         commentId:'',
         message: '',
         likes:'',
@@ -36,13 +36,13 @@ const PostCreate = () => {
         }
     
         
-        fetch('http://localhost:3000/posts/create', requestOptions)
+        fetch('http://localhost:4000/posts/create', requestOptions)
         .then((response) => response.json())
         .then((data) => {
-        console.log(data);
-        // localStorage.setItem('token', JSON.stringify(data.accessToken));        })
+        console.log(data)
+       
         });
-        // navigateTimeline();
+        navigateTimeline();
     }
 
     return (

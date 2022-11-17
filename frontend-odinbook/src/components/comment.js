@@ -30,7 +30,7 @@ const Comment = ({postId}) => {
             }
     
         }
-        
+
         useEffect(() => {
             handleGetAllComments();
         }, [])

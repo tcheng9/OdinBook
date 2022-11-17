@@ -3,6 +3,7 @@ import {useEffect, useState} from 'react';
 import "./timeline.css";
 import CreateComment from './createComment';
 import Comment from "./comment";
+import CreateLike from "./createLike";
 
 const Timeline = () => {
 
@@ -56,6 +57,7 @@ const Timeline = () => {
                         </form> */}
                         <CreateComment postId = {data._id}/>
                         <Comment postId = {data._id} />
+                        <CreateLike postId = {data._id} />
                     </div>
                     
                 )
