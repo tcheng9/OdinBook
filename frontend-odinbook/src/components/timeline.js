@@ -4,6 +4,7 @@ import "./timeline.css";
 import CreateComment from './createComment';
 import Comment from "./comment";
 import CreateLike from "./createLike";
+import GetLikes from "./getLikes";
 
 const Timeline = () => {
 
@@ -58,6 +59,7 @@ const Timeline = () => {
                         <CreateComment postId = {data._id}/>
                         <Comment postId = {data._id} />
                         <CreateLike postId = {data._id} />
+                        <GetLikes postId = {data._id} />
                     </div>
                     
                 )

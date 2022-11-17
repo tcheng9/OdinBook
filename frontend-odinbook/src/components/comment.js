@@ -37,8 +37,8 @@ const Comment = ({postId}) => {
 
     return (
         <div>
-            <h1>  Testing comnnection </h1>
-            <h1> {postId} </h1> 
+            {/* <h1>  Testing comnnection </h1>
+            <h1> {postId} </h1>  */}
             
             <div>
                 <h1> Comments: </h1>
