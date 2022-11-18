@@ -20,8 +20,9 @@ const Comment = ({postId}) => {
                 .then(response => response.json())
                 .then(data => {
                     setFetchData(data);
+                    console.log('comments:')
                     console.log(data);
-                    // console.log(fetchData);
+
                 });
 
 
@@ -44,9 +45,9 @@ const Comment = ({postId}) => {
                 <h1> Comments: </h1>
                 <ol> 
                     {
-                        fetchData.map((data) => {
+                        fetchData.map((data, index) => {
                             return (
-                                <div>
+                                <div key = {data._id}>
                                     <li className = "commentItem"> {data.text}</li>
                                 </div>
                             )

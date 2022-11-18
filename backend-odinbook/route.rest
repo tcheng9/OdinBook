@@ -72,5 +72,5 @@ POST http://localhost:4000/posts/6376655179631bd3c800f1f9/likes
 Content-Type: application/json
 
 {
-    "userId": "test1"
+    "userId": "testPost"
 }

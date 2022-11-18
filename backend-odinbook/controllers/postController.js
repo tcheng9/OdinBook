@@ -62,6 +62,10 @@ exports.post_likes = (req, res, next) => {
     // let userId = "test5asdad";
     let postId = req.params.postId;
 
+    if (userId == null){
+        res.json({message: "null value"});
+    }
+
     // res.send(userId);
     Post.findByIdAndUpdate(postId, {$addToSet: {likes: [userId]}}, function(err, data) {
         if (err){

@@ -25,9 +25,10 @@ const GetLikes = ({postId}) => {
             fetch(postUrl, fetchSettings)
             .then(response => response.json())
             .then(data => {
-                setFetchData(data);
-                console.log('likes data:');
-                console.log(data);
+                setFetchData(data.likes);
+                // console.log('likes data:');
+                // // console.log(data.likes);
+                // console.log(data.likes);
             })
             
             
@@ -41,7 +42,25 @@ const GetLikes = ({postId}) => {
     }, [])
 
     return (
-        <h1> People who have given likes: </h1>
+        <div>
+             <h1> People who have given likes: </h1>
+
+            
+            <ol> 
+                    {
+                        fetchData.map((data, index) => {
+                            return (
+                                <div key = {index}>
+                                    <li className = "commentItem" > {data}</li>
+                                </div>
+                            )
+                        })
+                        
+                    }
+            </ol>
+            
+        </div>
+       
 
 
     )
