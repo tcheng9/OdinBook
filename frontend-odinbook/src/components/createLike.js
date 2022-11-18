@@ -33,7 +33,9 @@ const CreateLike = ({postId}) => {
                     userId: userId,
                 })
             }
-             
+            
+            console.log(userId);
+
             const postUrl = "http://localhost:4000/posts/" + postId + "/likes?userId=${userId}";
             
             fetch(postUrl, fetchSettings);

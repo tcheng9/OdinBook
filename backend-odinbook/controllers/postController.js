@@ -58,15 +58,16 @@ exports.get_likes = (req, res,next) => {
 
 //POST like function
 exports.post_likes = (req, res, next) => {
-    let userId = req.params.userId
+    let userId = req.body.userId;
     // let userId = "test5asdad";
     let postId = req.params.postId;
 
-    Post.findByIdAndUpdate(postId, {"$push": {likes: [userId]}}, function(err, data) {
+    // res.send(userId);
+    Post.findByIdAndUpdate(postId, {$addToSet: {likes: [userId]}}, function(err, data) {
         if (err){
             throw err;
         } else {
-            res.status(201).json({message: "sucess" + userId});
+            res.status(201).json({response: req.params.userId});
         }
             
         
