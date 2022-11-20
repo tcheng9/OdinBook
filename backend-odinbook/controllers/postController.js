@@ -4,7 +4,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 var async = require('async');
 var Post = require('../models/post');
-
+const mongoose = require('mongoose');
 // exports.login_get = (req, res, next) => {
 //     res.send('placeholder')
 // }
@@ -20,9 +20,12 @@ exports.get_post = async (req, res, next) => {
 
 
 exports.make_post = async (req, res, next) => {
+
+    const bsonAuthorId = mongoose.Types.ObjectId(req.body.authorId.trim());
+
     const post = new Post({
         title: req.body.title,
-        authorId: "placeholder",
+        authorId: req.body.authorId,
         commentId: "placeholder",
         message: req.body.message,
         likes: []

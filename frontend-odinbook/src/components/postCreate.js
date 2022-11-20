@@ -1,15 +1,18 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
 import {useState} from 'react';
+import jwt_decode from "jwt-decode";
 
 const PostCreate = () => {
-    
+
+    //Creating function to navigate to timeline page
     const navigate = useNavigate(); 
 
     const navigateTimeline = () => {
         navigate('/timeline');
     }
 
+    //Form data initial state
     const [formData, setFormData] = useState({
         title: '',
         authorId:'',
@@ -18,13 +21,25 @@ const PostCreate = () => {
         likes:'',
     })
 
+    //Function to decode JWT and get userID
+    const token = localStorage.getItem('token');
+    const decoded = jwt_decode(token);
+    const userId = decoded.id;
+    
+
+
+
+    //funciton to handle user's submitting data into form sections
     function handlePost(e) {
         const newData = {...formData};
         newData[e.target.id] = e.target.value;
-        setFormData(newData)
+        newData["authorId"] = userId;
+        setFormData(newData);
+
         console.log(newData);
     }
 
+    //Handle form submit
     function formSubmit(e) {
         e.preventDefault();
        
