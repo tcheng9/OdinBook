@@ -11,8 +11,11 @@ router.get('/', function(req, res, next) {
 router.post('/', profile_controller.make_profile);
 
 
-/*Get profile by user ID */
-router.post('/:id', profile_controller.make_profile);
+/* GET - get profile by user ID */
+router.get('/:userId', profile_controller.get_profile_by_id)
+
+/*POSt - create profile by user ID */
+router.post('/:userId', profile_controller.make_profile);
 
 
 module.exports = router;

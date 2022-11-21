@@ -68,12 +68,12 @@ GET http://localhost:4000/posts/6376637b79631bd3c800f19c/likes
 
 ###
 
-POST http://localhost:4000/profile
+POST http://localhost:4000/profile/636c187091bda9498a3f5a20
 Content-Type: application/json
 
 {
-    "userId": "testPost",
-    "age":11,
+    "userId": "636c187091bda9498a3f5a20",
+    "age":13,
     "gender":"male",
     "worstTravelExp":"chicago",
     "designTVShow": "doctor who",
@@ -81,3 +81,5 @@ Content-Type: application/json
     "profileImage": "profile-test"
 }
 
+###
+GET http://localhost:4000/profile/636c187091bda9498a3f5a20

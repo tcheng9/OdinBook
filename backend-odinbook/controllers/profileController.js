@@ -31,3 +31,28 @@ exports.make_profile = async(req, res, next) => {
         res.status(401).json({message:err.message});
     }
 }
+
+/*GET profile by ID*/
+
+exports.get_profile_by_id = async(req, res, next) => {
+    let userId = req.params.userId;
+
+    //ITS NOT FINDBYID, U NEED TO DO FIND THEN MATCH BY USERID PARAMETER
+    // Profile.findById(userId, function(err, data) {
+    //     if(err){
+    //         res.status(400).json({message: err});
+
+    //     } else {
+    //         res.status(201).json(data);
+    //     }
+    // });
+
+    Profile.find({userId: userId}, function (err, result){
+        try {
+            res.status(200).json(result)
+
+        } catch (err){
+            res.status(401).json({message: err.message});
+        }
+    })
+};
