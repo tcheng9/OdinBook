@@ -35,7 +35,7 @@ exports.make_profile = async(req, res, next) => {
     console.log(req.file);
 
     const profile = new Profile({
-        userId: req.body.userId,
+        userId: req.params.userId,
         age: req.body.age,
         gender:req.body.gender,
         worstTravelExp: req.body.travel,
@@ -58,6 +58,7 @@ exports.make_profile = async(req, res, next) => {
 exports.get_profile_by_id = async(req, res, next) => {
     let userId = req.params.userId;
     
+    // res.send(userId);
 
     //ITS NOT FINDBYID, U NEED TO DO FIND THEN MATCH BY USERID PARAMETER
     // Profile.findById(userId, function(err, data) {

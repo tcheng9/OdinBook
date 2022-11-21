@@ -8,7 +8,8 @@ import Login from "./login";
 import FacebookLogin from "./facebookLogin";
 import Timeline from "./timeline";
 import PostCreate from "./postCreate";
-
+import CreateProfile from './createProfile';
+import GetProfile from "./getProfile";
 
 const RouteSwitch = () => {
   return (
@@ -20,6 +21,8 @@ const RouteSwitch = () => {
         <Route path = "/timeline" element = {<Timeline />} />
         <Route path = "/signup" element = {<Signup />} />
         <Route path = "/createpost" element = {<PostCreate />} />
+        <Route path = "/createProfile" element = {<CreateProfile />} /> 
+        <Route path = "/showPage" element = {<GetProfile />} /> 
       </Routes>
     </BrowserRouter>
   );
