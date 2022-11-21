@@ -7,9 +7,9 @@ const ProfileSchema = new Schema(
         age: {type: Number},
         gender: {type: String},
         worstTravelExp: {type: String}, //What was your worst travel experience?
-        designTvShow: {type: String}, //If you could design a reality TV show, what would it be like?
-        superpower: {type: String}
-
+        designTVShow: {type: String}, //If you could design a reality TV show, what would it be like?
+        superpower: {type: String},
+        profileImage: {type: String}
 
     }
 )
