@@ -1,18 +1,39 @@
 const Profile = require('../models/profile');
 const mongoose = require('mongoose');
 const {body, validationResult} = require('express-validator');
+const multer = require('multer');
 
+const storage = multer.diskStorage({
+    destination: function(req, file, cb){
+        cb(null, './uploads/');
+    },
+
+    filename: function(req, file, cb){
+        cb(null, new Date().toISOString() + file.originalname);
+    }
+})
+
+const upload = multer({storage: storage}); //dest is where it is store. NEEDS SETUP IN APP.JS
 
 
 /*GET a profile */
 exports.get_profile = async(req, res, next) => {
-    res.send('placeholder');
+    Profile.find({}, function (err, result){
+        try{
+            res.status(200).json(result);
+        } catch (err){
+            res.status(401).json({message: err.message})
+        }
+    });
 }
 
 
 /*POST a profile */
 
 exports.make_profile = async(req, res, next) => {
+
+    console.log(req.file);
+
     const profile = new Profile({
         userId: req.body.userId,
         age: req.body.age,
@@ -20,7 +41,7 @@ exports.make_profile = async(req, res, next) => {
         worstTravelExp: req.body.travel,
         designTVShow:req.body.show,
         superpower:req.body.power,
-        profileImage:req.body.image
+        profileImage:req.file.path
     });
 
     try {
@@ -36,6 +57,7 @@ exports.make_profile = async(req, res, next) => {
 
 exports.get_profile_by_id = async(req, res, next) => {
     let userId = req.params.userId;
+    
 
     //ITS NOT FINDBYID, U NEED TO DO FIND THEN MATCH BY USERID PARAMETER
     // Profile.findById(userId, function(err, data) {
