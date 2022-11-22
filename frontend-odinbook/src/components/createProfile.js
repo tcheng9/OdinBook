@@ -8,11 +8,11 @@ const CreateProfile = () => {
     const [formData, setFormData] = useState({
         userId: '',
         age:'',
-        gender:'',
+        gender: '',
         worstTravelExp: '',
         designTVShow:'',
         superpower: '',
-        profileImage:''
+        profileImage:'',
     })
 
     //Function to decode JWT and get userID
@@ -34,7 +34,25 @@ const CreateProfile = () => {
 
     function formSubmit(e){
         e.preventDefault();
-        console.log('clicked form submit');
+     
+
+        console.log(formData); 
+
+        const requestOptions = {
+            method: 'POST',
+            headers: {'Content-Type': 'multipart/form-data'},
+            body: JSON.stringify(formData),
+
+        }
+
+        const apiUrl = 'http://localhost:4000/profile/create/' + userId;
+
+        fetch(apiUrl, requestOptions)
+        .then((response) => response.json())
+        .then((data) => {
+        console.log(data)
+       
+        });
     }
 
     return (
@@ -47,7 +65,7 @@ const CreateProfile = () => {
                 <label htmlFor = "age"> Profile age</label> <br/>
                 <input onChange={(e) => handlePost(e)} value = {formData.age} type = "number" id = "age" name = "age"/> <br/>
 
-                <label htmlFor = "gender"> gender </label> <br/>
+                <label htmlFor = "gender"> gender</label> <br/>
                 <input onChange={(e) => handlePost(e)} value = {formData.gender} type = "text" id = "gender" name = "gender"/> <br/>
 
 
@@ -63,12 +81,12 @@ const CreateProfile = () => {
                 <input onChange={(e) => handlePost(e)} value = {formData.superpower} type = "text" id = "superpower" name = "superpower"/> <br/>
 
                 <label htmlFor = "profileImage"> Profile Picture </label> <br/>
-                <input onChange={(e) => handlePost(e)} value = {formData.gender} type = "file" id = "profileImage" name = "profileImage"/> <br/>
+                <input onChange={(e) => handlePost(e)} value = {formData.profileImage} type = "file" id = "profileImage" name = "profileImage"/> <br/>
 
 
 
 
-                <button onClick = {formSubmit}> Create Post </button> 
+                <button onClick = {formSubmit}> Create Profile </button> 
             </form>
          </div>
         </div>

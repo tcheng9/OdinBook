@@ -68,7 +68,7 @@ GET http://localhost:4000/posts/6376637b79631bd3c800f19c/likes
 
 ###
 
-POST http://localhost:4000/profile/636c187091bda9498a3f5a20
+POST http://localhost:4000/profile/create/636c187091bda9498a3f5a20
 Content-Type: application/json
 
 {
@@ -82,4 +82,4 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:4000/profile/636c187091bda9498a3f5a20
+GET http://localhost:4000/profile/create/636c187091bda9498a3f5a20
