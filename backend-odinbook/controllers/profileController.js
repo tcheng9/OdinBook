@@ -32,8 +32,8 @@ exports.get_profile = async(req, res, next) => {
 
 exports.make_profile = async(req, res, next) => {
 
-    console.log(req.file);
-
+    // console.log(req.file);
+    // res.json({message: "you are reaching the server"});
     const profile = new Profile({
         userId: req.params.userId,
         age: req.body.age,
@@ -41,11 +41,14 @@ exports.make_profile = async(req, res, next) => {
         worstTravelExp: req.body.travel,
         designTVShow:req.body.show,
         superpower:req.body.power,
-        profileImage:req.file.path
+        profileImage:req.body.file
     });
+
+
 
     try {
         const newProfile = await profile.save();
+        
         res.status(201).json(newProfile);
 
     } catch (err){

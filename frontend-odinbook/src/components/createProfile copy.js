@@ -5,8 +5,6 @@ import jwt_decode from "jwt-decode";
 
 const CreateProfile = () => {
 
-    const testForm = new FormData();
-
     const [formData, setFormData] = useState({
         userId: '',
         age:'',
@@ -42,22 +40,16 @@ const CreateProfile = () => {
         console.log(newData);
     }
 
-    function testHandleFile(e){
-        const files = e.target.files;
-
-        testForm.append('myFile', files[0]);
-    }
-
     function formSubmit(e){
         e.preventDefault();
      
-        let finalData = new FormData(formData)
+
         
 
         const requestOptions = {
             method: 'POST',
             // headers: {'Content-Type': 'multipart/form-data'},
-            body: finalData,
+            body: new FormData(formData)
 
         }
 
@@ -70,43 +62,6 @@ const CreateProfile = () => {
        
         });
     }
-
-
-    function testFormSubmit(e){
-        e.preventDefault();
-        const testFormData = new FormData();
-
-        console.log(formData.gender);
-        
-        testFormData.append('userId', 'placeholder');
-        testFormData.append('age', formData.age);
-        testFormData.append('gender', formData.gender);
-        testFormData.append('worstTravelExp', formData.worstTravelExp);
-        testFormData.append('designTVShow', formData.designTVShow);
-        testFormData.append('superpower', formData.superpower);
-        testFormData.append('file', 'placeholder');
-        // testFormData.append('file', e.target.files[0]);
-        
-
-
-
-        const requestOptions = {
-            method: 'POST',
-            // headers: {'Content-Type': 'multipart/form-data'},
-            mode:"cors",
-            body: testFormData
-
-        }
-
-        const apiUrl = 'http://localhost:4000/profile/create/' + '636c187091bda9498a3f5a20';
-
-        fetch(apiUrl, requestOptions).then((response) => response.json())
-        .then((data) => {
-            console.log(data)
-       
-        });
-    }
-    
 
     return (
         <div>
@@ -139,7 +94,7 @@ const CreateProfile = () => {
 
 
 
-                <button onClick = {testFormSubmit}> Create Profile </button> 
+                <button onClick = {formSubmit}> Create Profile </button> 
             </form>
          </div>
         </div>

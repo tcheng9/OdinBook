@@ -123,6 +123,12 @@ app.use('/posts', postRouter);
 app.use('/comments', commentRouter);
 
 
+app.use(function(req, res, next) {
+  // Website you wish to allow to connect
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001');
+});
+
+
 //Helper function for logging in
 app.use(function(req, res, next) {
   res.locals.currentUser = req.user;
