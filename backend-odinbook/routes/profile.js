@@ -38,14 +38,14 @@ router.post('/', profile_controller.make_profile);
 
 
 /*POSt - create profile by user ID */
-router.post('/create', upload.single('profileImage'), profile_controller.make_profile);
+router.post('/create', upload.single('file'), profile_controller.make_profile);
 
 
 /* GET - get profile by user ID */
 router.get('/create/:userId', profile_controller.get_profile_by_id)
 
 /*POSt - create profile by user ID */
-router.post('/create/:userId', upload.single('profileImage'), profile_controller.make_profile);
+router.post('/create/:userId', upload.single('file'), profile_controller.make_profile);
 
 
 module.exports = router;

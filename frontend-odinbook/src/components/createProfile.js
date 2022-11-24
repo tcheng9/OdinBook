@@ -17,6 +17,8 @@ const CreateProfile = () => {
         profileImage:'',
     })
 
+
+    const [file,setFile] = useState([]);
     //Function to decode JWT and get userID
     const token = localStorage.getItem('token');
     const decoded = jwt_decode(token);
@@ -30,16 +32,25 @@ const CreateProfile = () => {
         newData["authorId"] = userId;
         setFormData(newData);
 
-        console.log(newData);
+        // console.log(newData);
     }
 
     function handleFile(e){
-        const newData = {...formData};
-        newData[e.target.id] = e.target.files[0];
-        newData["authorId"] = userId;
-        setFormData(newData);
+       
+        const file = e.target.files[0];
+        setFile(file);
 
-        console.log(newData);
+        console.log(file);
+
+        // const newData = {...formData};
+        // newData[e.target.id] = e.target.files[0];
+        // newData["authorId"] = userId;
+        // setFormData(newData);
+
+        // console.log(newData);
+        // const files = Array.from(e.target.files)
+        // console.log("files:", files[0])
+        // console.log("files:", files[0].name)
     }
 
     function testHandleFile(e){
@@ -56,19 +67,22 @@ const CreateProfile = () => {
 
         const requestOptions = {
             method: 'POST',
-            // headers: {'Content-Type': 'multipart/form-data'},
+            headers: {'Content-Type': 'multipart/form-data'},
             body: finalData,
 
         }
 
         const apiUrl = 'http://localhost:4000/profile/create/' + userId;
 
+
         fetch(apiUrl, requestOptions)
-        .then((response) => response.json())
-        .then((data) => {
-        console.log(data)
+        .then((response) => console.log(response));
+        // fetch(apiUrl, requestOptions)
+        // .then((response) => response.json())
+        // .then((data) => {
+        // console.log(data)
        
-        });
+        // });
     }
 
 
@@ -76,7 +90,7 @@ const CreateProfile = () => {
         e.preventDefault();
         const testFormData = new FormData();
 
-        console.log(formData.gender);
+        
         
         testFormData.append('userId', 'placeholder');
         testFormData.append('age', formData.age);
@@ -84,25 +98,26 @@ const CreateProfile = () => {
         testFormData.append('worstTravelExp', formData.worstTravelExp);
         testFormData.append('designTVShow', formData.designTVShow);
         testFormData.append('superpower', formData.superpower);
-        testFormData.append('file', 'placeholder');
-        // testFormData.append('file', e.target.files[0]);
+        // testFormData.append('file', 'placeholder');
+        testFormData.append('file', file);
         
 
 
+        const token = sessionStorage.getItem('token');
 
         const requestOptions = {
             method: 'POST',
-            // headers: {'Content-Type': 'multipart/form-data'},
             mode:"cors",
-            body: testFormData
+            body: testFormData,
+            
 
         }
 
-        const apiUrl = 'http://localhost:4000/profile/create/' + '636c187091bda9498a3f5a20';
+        const apiUrl = 'http://localhost:4000/profile/create';
 
-        fetch(apiUrl, requestOptions).then((response) => response.json())
+        fetch(apiUrl, requestOptions).then((response) => console.log('responding'))
         .then((data) => {
-            console.log(data)
+            console.log('data' + data)
        
         });
     }
