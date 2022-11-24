@@ -22,14 +22,14 @@ const CreateProfile = () => {
     //Function to decode JWT and get userID
     const token = localStorage.getItem('token');
     const decoded = jwt_decode(token);
-    const userId = decoded.id;
+    const userIdToken = decoded.id;
 
 
     //Handle changes in form data change
     function handlePost(e) {
         const newData = {...formData};
         newData[e.target.id] = e.target.value;
-        newData["authorId"] = userId;
+        newData["authorId"] = userIdToken;
         setFormData(newData);
 
         // console.log(newData);
@@ -53,67 +53,37 @@ const CreateProfile = () => {
         // console.log("files:", files[0].name)
     }
 
-    function testHandleFile(e){
-        const files = e.target.files;
 
-        testForm.append('myFile', files[0]);
-    }
-
-    function formSubmit(e){
+    
+    function FormSubmit(e){
         e.preventDefault();
-     
-        let finalData = new FormData(formData)
+        //restFormData is getting data from the react JS form and then translating it into FormData() obj that can be used with Rest API
+        const restFormData = new FormData();
+
         
 
-        const requestOptions = {
-            method: 'POST',
-            headers: {'Content-Type': 'multipart/form-data'},
-            body: finalData,
-
-        }
-
-        const apiUrl = 'http://localhost:4000/profile/create/' + userId;
-
-
-        fetch(apiUrl, requestOptions)
-        .then((response) => console.log(response));
-        // fetch(apiUrl, requestOptions)
-        // .then((response) => response.json())
-        // .then((data) => {
-        // console.log(data)
+        restFormData.append('userId', userIdToken);
+        restFormData.append('age', formData.age);
+        restFormData.append('gender', formData.gender);
+        restFormData.append('worstTravelExp', formData.worstTravelExp);
+        restFormData.append('designTVShow', formData.designTVShow);
+        restFormData.append('superpower', formData.superpower);
        
-        // });
-    }
-
-
-    function testFormSubmit(e){
-        e.preventDefault();
-        const testFormData = new FormData();
-
-        
-        
-        testFormData.append('userId', 'placeholder');
-        testFormData.append('age', formData.age);
-        testFormData.append('gender', formData.gender);
-        testFormData.append('worstTravelExp', formData.worstTravelExp);
-        testFormData.append('designTVShow', formData.designTVShow);
-        testFormData.append('superpower', formData.superpower);
-        // testFormData.append('file', 'placeholder');
-        testFormData.append('file', file);
+        restFormData.append('file', file);
         
 
 
-        const token = sessionStorage.getItem('token');
+        
 
         const requestOptions = {
             method: 'POST',
             mode:"cors",
-            body: testFormData,
+            body: restFormData,
             
 
         }
 
-        const apiUrl = 'http://localhost:4000/profile/create';
+        const apiUrl = 'http://localhost:4000/profile/create/' + userIdToken;
 
         fetch(apiUrl, requestOptions).then((response) => console.log('responding'))
         .then((data) => {
@@ -154,9 +124,12 @@ const CreateProfile = () => {
 
 
 
-                <button onClick = {testFormSubmit}> Create Profile </button> 
+                <button onClick = {FormSubmit}> Create Profile </button> 
             </form>
          </div>
+        
+        {/* <img src = "http://localhost:3000/uploads/2022-11-24T14:02:08.399Ztree.jpeg"/> */}
+        
         </div>
         
         

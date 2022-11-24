@@ -65,7 +65,8 @@ const Timeline = () => {
                 )
             })}
             </ol>
-            <a href = "/createpost"> Create a post </a>        
+            <a href = "/createpost"> Create a post </a>
+            <a href = "/createprofile"> Create a profile </a>              
         </div>
     )
 }
