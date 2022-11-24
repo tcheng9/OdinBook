@@ -39,9 +39,9 @@ exports.make_profile = async(req, res, next) => {
         userId: req.params.userId,
         age: req.body.age,
         gender:req.body.gender,
-        worstTravelExp: req.body.travel,
-        designTVShow:req.body.show,
-        superpower:req.body.power,
+        worstTravelExp: req.body.worstTravelExp,
+        designTVShow:req.body.designTVShow,
+        superpower:req.body.superpower,
         profileImage:req.file.path
     });
 
