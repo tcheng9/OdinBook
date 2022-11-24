@@ -18,7 +18,9 @@ const upload = multer({storage: storage}); //dest is where it is store. NEEDS SE
 
 /*GET a profile */
 exports.get_profile = async(req, res, next) => {
-    Profile.find({}, function (err, result){
+    Profile.find({})
+    .populate('userId')
+    .exec(function (err, result){
         try{
             res.status(200).json(result);
         } catch (err){

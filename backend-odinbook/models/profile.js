@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const ProfileSchema = new Schema(
     {
-        userId: {type: String},
+        userId: {type: Schema.Types.ObjectId, ref: 'user'},
+        // userId: {type: String},
         age: {type: Number},
         gender: {type: String},
         worstTravelExp: {type: String}, //What was your worst travel experience?

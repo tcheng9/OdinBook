@@ -10,7 +10,8 @@ import Timeline from "./timeline";
 import PostCreate from "./postCreate";
 import CreateProfile from './createProfile';
 import GetProfile from "./getProfile";
-import DisplayUsers from "./listAllUsers";
+import DisplayProfiles from "./listAllProfiles";
+import TestDynamicRouting from "./testComponent";
 
 const RouteSwitch = () => {
   return (
@@ -24,7 +25,9 @@ const RouteSwitch = () => {
         <Route path = "/createpost" element = {<PostCreate />} />
         <Route path = "/createProfile" element = {<CreateProfile />} /> 
         <Route path = "/showPage" element = {<GetProfile />} /> 
-        <Route path = "/users" element = {<DisplayUsers />} />
+        <Route path = "/profiles" element = {<DisplayProfiles />} />
+        <Route path = "/profile/:profileID" element = {<TestDynamicRouting />} />
+
       </Routes>
     </BrowserRouter>
   );
