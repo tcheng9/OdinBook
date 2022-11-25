@@ -38,7 +38,12 @@ const Timeline = () => {
   
     
     return (
+        
         <div>
+            <a href = "/createpost"> Create a post </a>
+            <a href = "/createprofile"> Create a profile </a>  
+            <a href = "/profiles"> View all profiles </a>   
+
             <h1> Hello from timeline </h1>    
             <ol>
 
@@ -65,8 +70,8 @@ const Timeline = () => {
                 )
             })}
             </ol>
-            <a href = "/createpost"> Create a post </a>
-            <a href = "/createprofile"> Create a profile </a>              
+        
+            
         </div>
     )
 }

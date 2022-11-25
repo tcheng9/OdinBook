@@ -5,7 +5,7 @@ import {useState, useEffect} from "react";
 
 const DisplayProfiles = () => {
 // http://localhost:3000/profile
-
+// Dynamic routing based on usernames for each individual profile
     const [users, setUsers] = useState([]);
 
 
@@ -33,12 +33,16 @@ const DisplayProfiles = () => {
             <h1> List of Users: </h1>
 
             <ol>
+                
                 {
                     users.map((data) => {
+
+                        const url = "http://localhost:3001/profiles/" + data.userId._id;
+
                         return (
                             <div key = {data._id}>
-                                <div> profile user name: </div>
-                                <li> {data.userId.username}</li>
+                                
+                                <a href = {url}> {data.userId.username}</a>
                             </div>
                         )
                     })

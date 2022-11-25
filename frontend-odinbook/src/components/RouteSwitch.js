@@ -11,7 +11,7 @@ import PostCreate from "./postCreate";
 import CreateProfile from './createProfile';
 import GetProfile from "./getProfile";
 import DisplayProfiles from "./listAllProfiles";
-import TestDynamicRouting from "./testComponent";
+import DynamicProfiles from "./DynamicProfiles";
 
 const RouteSwitch = () => {
   return (
@@ -26,7 +26,7 @@ const RouteSwitch = () => {
         <Route path = "/createProfile" element = {<CreateProfile />} /> 
         <Route path = "/showPage" element = {<GetProfile />} /> 
         <Route path = "/profiles" element = {<DisplayProfiles />} />
-        <Route path = "/profile/:id" element = {<TestDynamicRouting />} />
+        <Route path = "/profiles/:id" element = {<DynamicProfiles />} />
       </Routes>
     </BrowserRouter>
   );
