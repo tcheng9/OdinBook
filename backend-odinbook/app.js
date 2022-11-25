@@ -32,6 +32,8 @@ var signupRouter = require('./routes/signup');
 var timelineRouter = require('./routes/timeline');
 var postRouter = require('./routes/createPost');
 var commentRouter = require('./routes/comment');
+var friendsRouter = require('./routes/friends');
+
 require("dotenv").config();
 
 
@@ -121,7 +123,7 @@ app.use('/showpage', showPageRouter);
 app.use('/timeline', timelineRouter);
 app.use('/posts', postRouter);
 app.use('/comments', commentRouter);
-
+app.use('/friends', friendsRouter);
 
 app.use(function(req, res, next) {
   // Website you wish to allow to connect
