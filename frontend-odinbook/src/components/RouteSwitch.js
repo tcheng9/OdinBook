@@ -26,8 +26,7 @@ const RouteSwitch = () => {
         <Route path = "/createProfile" element = {<CreateProfile />} /> 
         <Route path = "/showPage" element = {<GetProfile />} /> 
         <Route path = "/profiles" element = {<DisplayProfiles />} />
-        <Route path = "/profile/:profileID" element = {<TestDynamicRouting />} />
-
+        <Route path = "/profile/:id" element = {<TestDynamicRouting />} />
       </Routes>
     </BrowserRouter>
   );
