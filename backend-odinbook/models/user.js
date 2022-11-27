@@ -6,8 +6,8 @@ const UserSchema = new Schema(
     {
         username: {type: String},
         password: {type: String},
-        pendingFriendsRequests: [{type: String}], //array of reference to userId's
-        friends: [{type: String}], //Array of friends added
+        pendingFriendRequests: [{type: Schema.Types.ObjectId, ref: 'pendingFriend'}], //array of reference to userId's
+        friends: [{type: Schema.Types.ObjectId, ref: 'acceptedFriends'}], //Array of friends added
         facebookId: {type: String}
     }
 )

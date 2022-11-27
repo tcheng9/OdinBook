@@ -87,7 +87,14 @@ GET http://localhost:4000/profile/create/636c187091bda9498a3f5a20
 
 ###
 
-GET http://localhost:4000/friends
+GET http://localhost:4000/friends/pending
 
 ###
-POST http://localhost:4000/friends
+POST http://localhost:4000/friends/pending
+
+
+###
+GET http://localhost:4000/friends/accepted
+###
+
+POST http://localhost:4000/friends/accepted
