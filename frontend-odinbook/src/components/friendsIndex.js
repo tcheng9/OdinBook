@@ -10,6 +10,9 @@ function FriendsIndex(){
 
   const [numArray, setNumArray] = useState([0,1,2,3,4,5,6]);
 
+    const userA = "638386a5de2e8f31c224b0fc"
+    const userB = "638386aade2e8f31c224b0fe";
+
   function getAllUsers(){
     //Get all users listed in User's model in the datbase
     const requestOptions = {
@@ -21,8 +24,12 @@ function FriendsIndex(){
     fetch(url, requestOptions)
     .then((response => response.json()))
     .then((data) => {
-        setUsersList(data);
-        console.log(data);
+        setUsersList(Object.values(data)[0]);
+            
+        // console.log('data');
+        // console.log(data);
+        console.log('usersList');
+        console.log(usersList[0]);
     })
     
   }
@@ -40,8 +47,8 @@ function FriendsIndex(){
     fetch(url, requestOptions)
     .then((response => response.json()))
     .then((data) => {
-        setUsersList(data);
-        console.log(data);
+        setPendingFriends(Object.values(data)[0]);
+        console.log(pendingFriends);
     })
   } 
 
@@ -56,8 +63,8 @@ function FriendsIndex(){
     fetch(url, requestOptions)
     .then((response => response.json()))
     .then((data) => {
-        setUsersList(data);
-        console.log(data);
+        setAcceptedFriends(Object.values(data)[0]);
+        console.log(acceptedFriends);
     })
 
   }
@@ -70,22 +77,9 @@ function FriendsIndex(){
 
   return (
     <div>
-        <a href = "http://localhost:3000/auth/facebook"> Facebook Login </a>
-{/* 
-        {
-            numArray.map((data, index) => {
-                if (data < 5){
-                    return (
-                        <div> 1</div>
-                    )
-                } else {
-                    return (
-                        <div> Greater than 5 </div>
-                    )
-                }
+        <a href = "http://localhost:3000/auth/facebook"> Facebook Login </a> 
 
-            })
-        } */}
+       
 
     
     </div>
@@ -93,3 +87,20 @@ function FriendsIndex(){
 }
 
 export default FriendsIndex;
+
+
+// 
+// {
+//     numArray.map((data, index) => {
+//         if (data < 5){
+//             return (
+//                 <div> 1</div>
+//             )
+//         } else {
+//             return (
+//                 <div> Greater than 5 </div>
+//             )
+//         }
+
+//     })
+// }

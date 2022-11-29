@@ -11,7 +11,7 @@ exports.get_pending_friends = async(req, res, next) => {
         if (err){
             res.json({message: err});
         } else {
-            res.json({'pending friend requests':user.pendingFriendRequests});
+            res.json({'pendingFriendRequests':user.pendingFriendRequests});
         }
     })
 }
