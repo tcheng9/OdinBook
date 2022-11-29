@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import {useNavigate} from "react-router-dom";
 import {useState} from 'react';
+import jwt_decode from "jwt-decode";
 
-function FriendsIndex(){
+const FriendsIndex = ({postId}) => {
 
   const [usersList, setUsersList] = useState([]);
   const [pendingFriends, setPendingFriends] = useState([]);
@@ -10,8 +11,12 @@ function FriendsIndex(){
 
   const [numArray, setNumArray] = useState([0,1,2,3,4,5,6]);
 
-    const userA = "638386a5de2e8f31c224b0fc"
-    const userB = "638386aade2e8f31c224b0fe";
+  const userA = "638386a5de2e8f31c224b0fc"
+  const userB = "638386aade2e8f31c224b0fe";
+
+  const token = localStorage.getItem('token');
+  const decoded = jwt_decode(token);
+  const userId = decoded.id;
 
   function getAllUsers(){
     //Get all users listed in User's model in the datbase
@@ -29,7 +34,7 @@ function FriendsIndex(){
         // console.log('data');
         // console.log(data);
         console.log('usersList');
-        console.log(usersList[0]);
+        console.log(usersList);
     })
     
   }
@@ -48,7 +53,7 @@ function FriendsIndex(){
     .then((response => response.json()))
     .then((data) => {
         setPendingFriends(Object.values(data)[0]);
-        console.log(pendingFriends);
+        // console.log(pendingFriends);
     })
   } 
 
@@ -64,7 +69,7 @@ function FriendsIndex(){
     .then((response => response.json()))
     .then((data) => {
         setAcceptedFriends(Object.values(data)[0]);
-        console.log(acceptedFriends);
+        // console.log(acceptedFriends);
     })
 
   }
@@ -79,6 +84,60 @@ function FriendsIndex(){
     <div>
         <a href = "http://localhost:3000/auth/facebook"> Facebook Login </a> 
 
+        {
+           usersList.map((data) => {
+            console.log(data);
+            // In this iteration, is this user's ID in friends array
+            if (data.friends == "6e6f6e6520666f72206e6f77"){
+                return (
+                    <div>
+                    Friends condition
+                    <h1> {data.username} </h1>
+                    <p> True </p>
+                    <p> ---------------------------------------------</p>
+
+                    </div>
+                )
+            }
+
+            // In this iteration, is this user's ID in pending friend requests array
+            if (data.pendingFriendRequests != "6e6f6e6520666f72206e6f77"){
+              return (
+                  <div>
+                  Pending friend requests condiiton
+                  <h1> {data.username} </h1>
+                  <p> True </p>
+                  <p> ---------------------------------------------</p>
+                  
+                  </div>
+              )
+          }
+            // In this iteration, is this user's ID in friends/pendingFriendRequests array
+
+            if (data.friends == userId || data.pendingFriendRequests == userId){
+              return (
+                  <div>
+
+                  self match condition
+                  </div>
+              )
+          }
+
+          // In this iteration, the user and current user is not friend
+          if (data.pendingFriendRequests != userId){
+            return (
+                <div>
+
+                Not friends condition 
+                <button> Add this user </button>
+                </div>
+            )
+        }
+            return (
+                <div key = {data._id}> {data.username} </div>
+            )
+           })
+        }
        
 
     
