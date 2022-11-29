@@ -9,10 +9,8 @@ var jwt = require('jsonwebtoken');
 var auth_controller = require('../controllers/authController');
 
 /* GET   */
-router.get('/', function(req, res, next) {
-  res.send('placeholder');
-}
-);
+router.get('/', auth_controller.login_get);
+
 /* POST User sign up */
 router.post('/signup', auth_controller.signup_post)
 // router.post('/createpost', post_controller.create_post)

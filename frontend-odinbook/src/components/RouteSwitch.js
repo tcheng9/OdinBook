@@ -12,6 +12,8 @@ import CreateProfile from './createProfile';
 import GetProfile from "./getProfile";
 import DisplayProfiles from "./listAllProfiles";
 import DynamicProfiles from "./DynamicProfiles";
+import FriendsIndex from "./friendsIndex";
+
 
 const RouteSwitch = () => {
   return (
@@ -27,6 +29,8 @@ const RouteSwitch = () => {
         <Route path = "/showPage" element = {<GetProfile />} /> 
         <Route path = "/profiles" element = {<DisplayProfiles />} />
         <Route path = "/profiles/:id" element = {<DynamicProfiles />} />
+        <Route path = "/friends" element = {<FriendsIndex />} />
+
       </Routes>
     </BrowserRouter>
   );

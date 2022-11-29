@@ -6,8 +6,13 @@ var async = require('async');
 var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 
-exports.login_get = (req, res, next) => {
-    res.send('placeholder')
+exports.login_get = async (req, res, next) => {
+    const users = await User.find({});
+    try{
+        res.json({users});
+    } catch(err){
+        res.json({message: err});
+    }
 }
 
 exports.signup_post = async (req, res, next) => {
