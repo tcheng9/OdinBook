@@ -33,8 +33,8 @@ const FriendsIndex = ({postId}) => {
             
         // console.log('data');
         // console.log(data);
-        console.log('usersList');
-        console.log(usersList);
+        // console.log('usersList');
+        // console.log(usersList);
     })
     
   }
@@ -86,18 +86,19 @@ const FriendsIndex = ({postId}) => {
 
         {
            usersList.map((data) => {
-            console.log(data);
+            console.log(data.friends);
             // In this iteration, is this user's ID in friends array
-            if (data.friends == "6e6f6e6520666f72206e6f77"){
-                return (
-                    <div>
-                    Friends condition
-                    <h1> {data.username} </h1>
-                    <p> True </p>
-                    <p> ---------------------------------------------</p>
+            if (data.friends.indexOf("6e6f6e6520666f72206e6f77") > -1){
+                console.log(data.friends)
+                // return (
+                //     // <div>
+                //     // Friends condition
+                //     // <h1> {data.username} </h1>
+                //     // <p> True </p>
+                //     // <p> ---------------------------------------------</p>
 
-                    </div>
-                )
+                //     // </div>
+                // )
             }
 
             // In this iteration, is this user's ID in pending friend requests array
