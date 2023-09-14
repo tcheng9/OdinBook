@@ -100,3 +100,26 @@ GET http://localhost:4000/friends/accepted
 ###
 
 POST http://localhost:4000/friends/accepted
+
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+////////SEPTEMBER 2023 REWORKING PROJECT/////////////
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+
+//Update a comment
+###
+PUT http://localhost:4000/comments/123
+
+// Delete a comment
+###
+DELETE http://localhost:4000/comments/123
+
+
+//Update a specific post
+###
+PUT http://localhost:4000/posts/123
+
+//Delete a specific post
+###
+DELETE http://localhost:4000/posts/123

@@ -45,6 +45,26 @@ exports.get_details = (req, res, next) => {
     res.send(req.params.id);
 }
 
+
+//update a specific post
+exports.update_post = async(req, res, next) => {
+    try {
+        res.status(200).json({message: 'working on post update'});
+    } catch(err) {
+        res.send(401).json({message: err.message})
+    }
+}
+
+//delete a specific post
+exports.delete_post = async(req, res, next) => {
+    try {
+        res.status(200).json({message: 'working on post delete'});
+    } catch(err) {
+        res.send(401).json({message: err.message})
+    }
+}
+
+/////////////LIKES FUNCTIONALITY ----> START //////////////
 //GET like functon
 exports.get_likes = (req, res,next) => {
     let postId = req.params.postId;
@@ -82,3 +102,6 @@ exports.post_likes = (req, res, next) => {
     
     
 }
+
+
+/////////////LIKES FUNCTIONALITY ----> END //////////////
