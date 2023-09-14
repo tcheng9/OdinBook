@@ -11,7 +11,7 @@ const mongoose = require('mongoose');
 
 exports.get_post = async (req, res, next) => {
     try {
-        const posts = await Post.find();
+        const posts = await Post.find().sort({'timestamp':-1});
         res.json(posts);
     } catch (err) {
         res.status(500).json({message: err.message});

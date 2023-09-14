@@ -9,7 +9,7 @@ const PostSchema = new Schema(
         commentId: {type: String},
         message: {type: String},
         likes: {type: [{type: String}]}, //How to deal with likes counts and likes users?
-        // timestamp: Date.now()
+        timestamp: {type: Date, default: Date.now}
     }
 )
 //postId: {type: Schema.Types.ObjectId, ref: 'post'},

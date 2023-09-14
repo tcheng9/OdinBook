@@ -7,7 +7,8 @@ const CommentSchema = new Schema(
         // authorId: {type: Schema.Types.ObjectId, ref: 'user'},
         // postId: {type: Schema.Types.ObjectId, ref: 'post'}
         authorId: {type: String},
-        postId: {type: String}
+        postId: {type: String},
+        timestamp: {type: Date, default: Date.now}
     }
 )
 
