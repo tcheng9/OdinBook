@@ -5,6 +5,7 @@ const LocalStrategy = require("passport-local").Strategy;
 var async = require('async');
 var Post = require('../models/post');
 const mongoose = require('mongoose');
+
 // exports.login_get = (req, res, next) => {
 //     res.send('placeholder')
 // }
@@ -56,11 +57,18 @@ exports.update_post = async(req, res, next) => {
 }
 
 //delete a specific post
-exports.delete_post = async(req, res, next) => {
+exports.delete_post = async (req, res, next) => {
     try {
-        res.status(200).json({message: 'working on post delete'});
+
+        // res.send(req.params.id);
+        // await res.posts.delete({"_id":req.params.id});
+        // res.status(200).json({message: 'working on post delete'});
+        let post;
+        post = await Post.findById(req.params.id);
+        res.send(post);
+        
     } catch(err) {
-        res.send(401).json({message: err.message})
+        res.json({message: err.message})
     }
 }
 
