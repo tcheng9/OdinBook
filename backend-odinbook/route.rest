@@ -137,3 +137,30 @@ GET http://localhost:4000/posts
 ###
 DELETE http://localhost:4000/comments/63766119c8708f8170062f72
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QxMSIsImlhdCI6MTY4OTI4MjA3NX0.z7wy1gMBvDDMGR9ob74oucY6yYintfK206JWd8YYBzw
+
+
+/////////Likes testing
+//Adding a like 
+###
+POST http://localhost:4000/posts/650b24d0825e551ccf70ed32/likes
+Content-Type: application/json
+
+{
+    "userId": "test5"
+}
+###
+//get likes 
+GET http://localhost:4000/posts/650b24d0825e551ccf70ed32/likes
+
+//Unlike functionality
+###
+POST http://localhost:4000/posts/650b24d0825e551ccf70ed32/unlike
+Content-Type: application/json
+
+{
+    "userId": "test1"
+}
+
+//likes -> 650128b1fa256bb871fb51ac / test1 /test2 
+
+
