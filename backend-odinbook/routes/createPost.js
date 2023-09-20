@@ -29,9 +29,9 @@ router.get('/:postId/likes', post_controller.get_likes);
 router.post('/:postId/likes', post_controller.post_likes);
 
 /* UPDATE A POST */
-router.put('/:id', post_controller.update_post);
+router.patch('/:id', post_controller.get_post_by_id, post_controller.update_post);
 
 /* DELETE A POST */
-router.delete('/:id', post_controller.delete_post);
+router.delete('/:id', post_controller.get_post_by_id, post_controller.delete_post);
 
 module.exports = router;

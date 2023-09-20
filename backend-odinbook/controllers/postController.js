@@ -49,10 +49,31 @@ exports.get_details = (req, res, next) => {
 
 //update a specific post
 exports.update_post = async(req, res, next) => {
+    
+    if (req.body.title != null){
+        res.post.title = req.body.title
+    }
+
+    if (req.body.authorId != null){
+        res.post.authorId = req.body.authorId
+    }
+
+    if (req.body.commentId != null){
+        res.post.commentId = req.body.commentId
+    }
+
+    if (req.body.likes != null){
+        res.post.likes = req.body.likes
+    }
+    
+
+   
     try {
-        res.status(200).json({message: 'working on post update'});
+        const updatedPost = await res.post.save();
+        res.json(updatedPost);
+        
     } catch(err) {
-        res.send(401).json({message: err.message})
+        res.json({message: err.message})
     }
 }
 
@@ -60,13 +81,8 @@ exports.update_post = async(req, res, next) => {
 exports.delete_post = async (req, res, next) => {
     try {
 
-        // res.send(req.params.id);
-        // await res.posts.delete({"_id":req.params.id});
-        // res.status(200).json({message: 'working on post delete'});
-        let post;
-        post = await Post.findById(req.params.id);
-        res.send(post);
-        
+        await res.post.remove();
+        res.json({message:'Delete post'});
     } catch(err) {
         res.json({message: err.message})
     }
@@ -111,5 +127,18 @@ exports.post_likes = (req, res, next) => {
     
 }
 
+exports.get_post_by_id = async function getPost(req, res, next){
+    let post;
+    try{
+        post = await Post.findById(req.params.id);
+        if(post === null){
+            return res.status(404).json({message: `cannot find post ${post}`})
+        }
+    } catch (err){
+        return res.status(401).json({message: err.message});
+    }
 
+    res.post = post;
+    next();
+}
 /////////////LIKES FUNCTIONALITY ----> END //////////////

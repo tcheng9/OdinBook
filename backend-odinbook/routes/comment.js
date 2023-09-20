@@ -14,6 +14,6 @@ router.post('/create', comment_controller.post_comments);
 /* PUT (update) a comment */
 router.put('/:id', comment_controller.update_comment);
 /* delete a comment */
-router.delete('/:id', comment_controller.delete_comment);
+router.delete('/:id', comment_controller.get_comment_by_id, comment_controller.delete_comment);
 
 module.exports = router;

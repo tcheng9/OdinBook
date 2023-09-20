@@ -118,13 +118,22 @@ DELETE http://localhost:4000/comments/123
 
 //Update a specific post
 ###
-PUT http://localhost:4000/posts/123
+PATCH http://localhost:4000/posts/6376637b79631bd3c800f19c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QxMSIsImlhdCI6MTY4OTI4MjA3NX0.z7wy1gMBvDDMGR9ob74oucY6yYintfK206JWd8YYBzw
+Content-Type: application/json
 
+{
+    "title": "new title"
+}
 //Delete a specific post
 ###
-DELETE http://localhost:4000/posts/6376654979631bd3c800f1f4
+DELETE http://localhost:4000/posts/6502718074f20f3884a4f7e8
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QxMSIsImlhdCI6MTY4OTI4MjA3NX0.z7wy1gMBvDDMGR9ob74oucY6yYintfK206JWd8YYBzw
 
 
 ###
 GET http://localhost:4000/posts
+
+###
+DELETE http://localhost:4000/comments/63766119c8708f8170062f72
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QxMSIsImlhdCI6MTY4OTI4MjA3NX0.z7wy1gMBvDDMGR9ob74oucY6yYintfK206JWd8YYBzw

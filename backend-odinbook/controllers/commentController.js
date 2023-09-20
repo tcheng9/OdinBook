@@ -50,10 +50,24 @@ exports.update_comment = async(req, res, next) => {
 //functionality to delete an existing comment by its id
 exports.delete_comment = async(req,res,next) => {
     try{
-        console.log('here delete')
-        res.status(200).json({message:'working delete'});
+        await res.comment.remove();
+        res.json({message:'deleted comment'})
     } catch (err) {
         res.status(401).json({message:err.message});
     }
 }
 
+exports.get_comment_by_id = async(req, res, next) => {
+    let comment;
+    try{
+        
+        comment = await Comment.findById(req.params.id);
+        if (comment === null){
+            return res.status(404).json({message:`cannot find post ${req.params.id}`});
+        }   
+    } catch (err){
+        res.status(401).json({message: err.message});
+    }
+    res.comment = comment;
+    next();
+}
