@@ -4,15 +4,16 @@ var router = express.Router();
 var friends_controller = require('../controllers/friendsController');
 
 //GET Get all friend requests
-router.get('/pending', friends_controller.get_pending_friends)
+router.get('/pending/:userId', friends_controller.get_pending_friends_by_id)
 
-//POST create friend request
-router.post('/pending', friends_controller.post_pending_friends);
+//POST - function to submit a friend request
+router.post('/pending/:userId/:targetId', friends_controller.sending_friend_request);
 
 
 //GET get all accepeed friends
-router.get('/accepted', friends_controller.get_accepted_friends);
+router.get('/accepted/:userId', friends_controller.get_friends_list_by_id);
 //POST add to friends array (and remove from pending friend request)
 
-router.post('/accepted', friends_controller.post_accepted_friends);
+//POST - Function to accepting a pending friend request 
+router.post('/accepted/:userId/:targetId', friends_controller.accepting_friend_request);
 module.exports = router;
