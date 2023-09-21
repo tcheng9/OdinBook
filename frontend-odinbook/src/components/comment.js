@@ -6,6 +6,7 @@ const Comment = ({postId}) => {
 
         const [fetchData, setFetchData] = useState([]);
 
+        //Function to get all comments existing in the database
         const handleGetAllComments = () => {
             try{
                 const fetchSettings = {
@@ -32,9 +33,34 @@ const Comment = ({postId}) => {
     
         }
 
+        //When page loads, it gets all comments and eisplays them accordingly 
+        //-> based on corresponding postId
         useEffect(() => {
             handleGetAllComments();
         }, [])
+
+        //Function to delete a selected comment by id
+        function deleteComment(e){
+            e.preventDefault();
+            console.log(e.target.id);
+            deleteCommentAPICall(e.target.id);
+            window.location.reload(false);
+        }
+
+        //Fetch API call to delete selected comment
+
+        const deleteCommentAPICall = async(commentId)=> {
+            fetch('http://localhost:4000/comments/' + commentId, {
+                method:'DELETE',
+                // headers: {
+                    //Need to add access token later
+                // },
+                body: JSON.stringify({
+                    postId: commentId
+                })
+            })
+        };
+
 
     return (
         <div>
@@ -49,6 +75,9 @@ const Comment = ({postId}) => {
                             return (
                                 <div key = {data._id}>
                                     <li className = "commentItem"> {data.text}</li>
+                                    <button onClick = {deleteComment} id = {data._id}>
+                                        Delete this comment
+                                    </button>
                                 </div>
                             )
                         })

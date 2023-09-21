@@ -129,7 +129,7 @@ Content-Type: application/json
 }
 //Delete a specific post
 ###
-DELETE http://localhost:4000/posts/6502718074f20f3884a4f7e8
+DELETE http://localhost:4000/posts/650ccbdc6c38c68a1d0ce978
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QxMSIsImlhdCI6MTY4OTI4MjA3NX0.z7wy1gMBvDDMGR9ob74oucY6yYintfK206JWd8YYBzw
 
 

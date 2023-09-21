@@ -43,15 +43,19 @@ const Timeline = () => {
     //function to delete
     function deletePost(e){
         e.preventDefault();
-        console.log('clicking delete btn');
+       
+        deletePostAPICall(e.target.id);
+        console.log('post deleted');
+        window.location.reload(false);
     }
     
-    const deletePostAPICall = async()=> {
+    //Fetch call to delete a post by postId
+    const deletePostAPICall = async(postId)=> {
         fetch('http://localhost:4000/posts/' + postId, {
-            method:'POST',
-            headers: {
-
-            },
+            method:'DELETE',
+            // headers: {
+                //Need to add access token later
+            // },
             body: JSON.stringify({
                 postId: postId
             })
@@ -82,8 +86,8 @@ const Timeline = () => {
 
                             <button onClick = {commentSubmit}> Login </button> 
                         </form> */}
-                        <button onClick = {deletePost}>
-                            Delete
+                        <button onClick = {deletePost} id = {data._id}>
+                            Delete this post
                         </button>
                         <CreateComment postId = {data._id}/>
                         <Comment postId = {data._id} />
