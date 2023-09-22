@@ -16,4 +16,8 @@ router.get('/accepted/:userId', friends_controller.get_friends_list_by_id);
 
 //POST - Function to accepting a pending friend request 
 router.post('/accepted/:userId/:targetId', friends_controller.accepting_friend_request);
+
+//POST - function to delete a current friend 
+router.post('/delete/:userId/:targetId', friends_controller.delete_accepted_friend)
+
 module.exports = router;

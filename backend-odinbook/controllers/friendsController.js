@@ -25,26 +25,31 @@ exports.sending_friend_request = async(req, res, next) => {
 
     let currUser = req.params.userId  //Current user who is logged in and sending the request
     let targetId = req.params.targetId //The person the current user wants to send to, "target"
+     //sept2023-10 = 650de2f2ebc0632606b092fa
+    //sept2023-11 = 650de2f7ebc0632606b092fc
 
     User.findByIdAndUpdate(currUser,
-        {$addToSet: {pendingFriendRequests: targetId}},
-        function(err, success){
-            if (err){
-                console.log(err);
-            } else {
-                console.log(success);
-            }
-    })
+            {$addToSet: {pendingFriendRequests: targetId}},
+            function(err, success){
+                if (err){
+                    // res.status(401).json({err: err.message})
+                    
+                } else {
+                    // res.status(200).json({message: 'friend request sent'})
+                }
+        })
 
     User.findByIdAndUpdate(targetId,
         {$addToSet: {pendingFriendRequests: currUser}},
         function(err, success){
             if (err){
-                console.log(err);
+                // res.status(401).json({err: err.message})
             } else {
-                console.log(success);
+                // res.status(200).json({message: 'friend request sent'})
             }
     })
+    res.send('here');
+    
 
 }
 
@@ -71,29 +76,35 @@ exports.accepting_friend_request  = async (req, res, next) => {
     // sept2023-3 = 650c78c047d9e8e3b9cbfa51
     // sept2023-4 = 650c78d247d9e8e3b9cbfa53
 
-    let currUser = '638386a5de2e8f31c224b0fc'
-    let friendId = "638386aade2e8f31c224b0fe"
+    //sept2023-10 = 650de2f2ebc0632606b092fa
+    //sept2023-11 = 650de2f7ebc0632606b092fc
+    let currUser = req.params.userId  //Current user who is logged in and sending the request
+    let targetId = req.params.targetId //The person the current user wants to send to, "target"
+
+    
    
    
 
     //Adding to friends list
     User.findByIdAndUpdate(currUser,
-        {$addToSet: {friends: friendId}},
+        {$addToSet: {friends: targetId}},
         function(err, success){
             if (err){
-                console.log('1' + err);
+                // res.status(401).json({err: err.message})
+                console.log(err);
             } else {
-                console.log(success);
+                // res.status(200).json({message: 'friend request sent'})
             }
     })
-
-    User.findByIdAndUpdate(friendId,
+    User.findByIdAndUpdate(targetId,
         {$addToSet: {friends: currUser}},
         function(err, success){
             if (err){
-                console.log('2' + err);
+                console.log(err)
+                // res.status(401).json({err2:err.message});
             } else {
-                console.log(success);
+                console.log('working-2')
+                // res.status(200).json({message2: 'friend request sent - 2'});
             }
     })
 
@@ -101,25 +112,73 @@ exports.accepting_friend_request  = async (req, res, next) => {
     
     
      User.findByIdAndUpdate(currUser,
-        {$pull: {pendingFriendRequests: friendId}},
+        {$pull: {pendingFriendRequests: targetId}},
         function(err, success){
             if (err){
-                console.log('3' + err);
+                console.log(err)
+                // res.status(401).json({err3:err.message});
             } else {
-                console.log(success);
+                console.log('working3')
+                // res.status(200).json({message3: 'friend removed from pending friends array - 3'});
             }
     })
 
-    User.findByIdAndUpdate(friendId,
+    User.findByIdAndUpdate(targetId,
         {$pull: {pendingFriendRequests: currUser}},
         function(err, success){
             if (err){
-                console.log('4'+ err);
+                console.log(err)
+                // res.status(401).json({err: err.message});
                 
             } else {
-                res.json({message: 'final one is successful'})
+                
+                // res.status(200).json({message4: 'friend removed from pending friends array - 4'});
             }
     })
+    res.send('here2');
 
 }
 
+
+exports.delete_accepted_friend = async (req, res, next) => {
+    //function to unfriend a current friend
+    
+    //sept2023-1 = 650c78b847d9e8e3b9cbfa4d
+    // sept2023-2 = 650c78bc47d9e8e3b9cbfa4f
+    // sept2023-3 = 650c78c047d9e8e3b9cbfa51
+    // sept2023-4 = 650c78d247d9e8e3b9cbfa53
+
+    // sept2023-10 = 650de2f2ebc0632606b092fa
+    // sept2023-11 = 650de2f7ebc0632606b092fc
+    let currUser = req.params.userId  //Current user who is logged in and sending the request
+    let targetId = req.params.targetId //The person the current user wants to send to, "target"
+
+    //Remove from pending friends list
+    res.send(currUser)
+    
+    User.findByIdAndUpdate(currUser,
+        {$pull: {friends: targetId}},
+        function(err, success){
+            if (err){
+                console.log(err)
+                // res.status(401).json({err3:err.message});
+            } else {
+                console.log('working3')
+                // res.status(200).json({message3: 'friend removed from pending friends array - 3'});
+            }
+    })
+
+    User.findByIdAndUpdate(targetId,
+        {$pull: {friends: currUser}},
+        function(err, success){
+            if (err){
+                console.log(err)
+                // res.status(401).json({err: err.message});
+                
+            } else {
+                
+                // res.status(200).json({message4: 'friend removed from pending friends array - 4'});
+            }
+    })
+    res.send('delete friend complete')
+}

@@ -174,3 +174,19 @@ GET http://localhost:4000/friends/pending/650c78b847d9e8e3b9cbfa4d
 ###
 //Get all friends
 GET http://localhost:4000/friends/accepted/650c78b847d9e8e3b9cbfa4d
+
+
+//Send a pending friend request
+###
+POST http://localhost:4000/friends/pending/650de2f2ebc0632606b092fa/650de2f7ebc0632606b092fc
+
+
+//accept a pending friend request
+###
+POST http://localhost:4000/friends/accepted/650de2f2ebc0632606b092fa/650de2f7ebc0632606b092fc
+
+
+//delete a current friend request
+###
+
+POST http://localhost:4000/friends/delete/650de2f2ebc0632606b092fa/650de2f7ebc0632606b092fc
