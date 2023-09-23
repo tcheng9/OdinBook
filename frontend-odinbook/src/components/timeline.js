@@ -14,6 +14,10 @@ const Timeline = () => {
         comment: '',
     });
 
+    const [postId, setPostId] = useState('');
+
+   
+
     function handleComment(e) {
         const newData = {...comment};
         newData[e.target.id] = e.target.value;
@@ -36,7 +40,28 @@ const Timeline = () => {
         setPostData(await response.json());
     }
   
+    //function to delete
+    function deletePost(e){
+        e.preventDefault();
+       
+        deletePostAPICall(e.target.id);
+        console.log('post deleted');
+        window.location.reload(false);
+    }
     
+    //Fetch call to delete a post by postId
+    const deletePostAPICall = async(postId)=> {
+        fetch('http://localhost:4000/posts/' + postId, {
+            method:'DELETE',
+            // headers: {
+                //Need to add access token later
+            // },
+            body: JSON.stringify({
+                postId: postId
+            })
+        })
+    };
+
     return (
         
         <div>
@@ -61,6 +86,9 @@ const Timeline = () => {
 
                             <button onClick = {commentSubmit}> Login </button> 
                         </form> */}
+                        <button onClick = {deletePost} id = {data._id}>
+                            Delete this post
+                        </button>
                         <CreateComment postId = {data._id}/>
                         <Comment postId = {data._id} />
                         <CreateLike postId = {data._id} />
