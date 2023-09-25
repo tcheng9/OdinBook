@@ -20,8 +20,9 @@ const FriendsManagement = () => {
         .then((response => response.json()))
         .then((data) => {
             setUsersList(Object.values(data)[0]);
-                
+            
             // console.log('data');
+           
             // console.log(data);
             // console.log('usersList');
             // console.log(usersList);
@@ -121,19 +122,60 @@ Thoughts:
 ///////////////////////////////////////////////////////////////////////////////////////////////////
     return(
         <div>
+            
             {
             usersList.map((data) => {
                 
+                let val1;
+                let val2;
+                // if (data.pendingFriendRequests.length != 0){
+                //     // val1 = data.pendingFriendRequests[0].senderCheck
+                //     val2 = data.pendingFriendRequests[0].senderId
+                //     // console.log(data.pendingFriendRequests[0].senderCheck)
+                //     console.log(data.pendingFriendRequests[0].senderId)
+                // // }
+                // console.log(data['pendingFriendRequests']);
+                //////////////////////////
+                // if (data.pendingFriendRequests[0].senderCheck === undefined){
+                //     // console.log(data.pendingFriendRequests[0].senderCheck)
+                //     console.log(data);
+                // }
+
+                //////////////////////////////////
+                // if (data.pendingFriendRequests[0].senderCheck && data.pendingFriendRequests[0].senderCheck === true){
+                //     val1 = "true"
+                // } else {
+                //     val1 = "false"
+                // }
+
+                
+                if (data['pendingFriendRequests'].length > 0){
+                    console.log(data['pendingFriendRequests'][0].senderCheck)
+                    if (data['pendingFriendRequests'][0].senderCheck === true){
+                        val1 = "true"
+                    } else {
+                        val1 = "false";
+                    }
+                
+                }
+
                return (
                 <div>
                     {data.username}
                     <br/>
                     {data._id} 
                     <br/>
-                    ------------------------------------------
+                    <div>
+                        Potential data here: <br/>
+                        {val1}
+
+                        <br/> 
+                        {val2}
+                    </div>
                     <button onClick = {handlePendingRequest} id = {data._id}> Add Friend </button>
                     <button onClick = {handleAcceptingFriendRequest} id = {data._id}> Accept friend request </button>
                     <button onClick = {handleUnfriending} id = {data._id}> Unfriend </button>
+                    ------------------------------------------
                 </div>
                )
             })
