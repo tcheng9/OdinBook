@@ -13,7 +13,7 @@ import GetProfile from "./getProfile";
 import DisplayProfiles from "./listAllProfiles";
 import DynamicProfiles from "./DynamicProfiles";
 import FriendsIndex from "./friendsIndex";
-
+import FriendsManagement from "./friendsManagement";
 
 const RouteSwitch = () => {
   return (
@@ -30,6 +30,7 @@ const RouteSwitch = () => {
         <Route path = "/profiles" element = {<DisplayProfiles />} />
         <Route path = "/profiles/:id" element = {<DynamicProfiles />} />
         <Route path = "/friends" element = {<FriendsIndex />} />
+        <Route path = "/friendsmanagement" element = {<FriendsManagement />} />
 
       </Routes>
     </BrowserRouter>

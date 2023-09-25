@@ -65,9 +65,12 @@ const Timeline = () => {
     return (
         
         <div>
-            <a href = "/createpost"> Create a post </a>
-            <a href = "/createprofile"> Create a profile </a>  
-            <a href = "/profiles"> View all profiles </a>   
+            <a href = "/createpost"> Create a post </a> <br/>
+            <a href = "/createprofile"> Create a profile </a>  <br/> 
+            <a href = "/profiles"> View all profiles </a>   <br/>
+            <a href = "/friendsmanagement"> Friends management page </a>  <br/>  
+            
+
 
             <h1> Hello from timeline </h1>    
             <ol>
@@ -93,6 +96,7 @@ const Timeline = () => {
                         <Comment postId = {data._id} />
                         <CreateLike postId = {data._id} />
                         <GetLikes postId = {data._id} />
+                        
                     </div>
                     
                 )
