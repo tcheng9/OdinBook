@@ -136,42 +136,57 @@ exports.post_unlikes = async (req, res, next) => {
     
     // res.status(200).json({name: userId});
     try {
+        
         await res.post;
         //likes_arr stores the likes for the current post
         let likes_arr = res.post.likes;
        
         // return res.status(200).json({likes: likes_arr});
-        if (likes_arr.length != 0){
+        // if (likes_arr.length != 0){
             
-            for (let i = 0; i < likes_arr.length; i++){
-                // likes_arr[i] = '650128b1fa256bb871fb51ac';
-                // userId = '650128b1fa256bb871fb51ac';
-                // res.json({
-                //     likes: likes_arr,
-                //     userId: userId
-                // })
-                // likesArr = ['test1', 'test2', '650128b1fa256bb871fb51ac']
+        //     for (let i = 0; i < likes_arr.length; i++){
+        //         // likes_arr[i] = '650128b1fa256bb871fb51ac';
+        //         // userId = '650128b1fa256bb871fb51ac';
+        //         // res.json({
+        //         //     likes: likes_arr,
+        //         //     userId: userId
+        //         // })
+        //         // likesArr = ['test1', 'test2', '650128b1fa256bb871fb51ac']
 
-                if (likes_arr[i] === userId ){
-                    likes_arr.splice(i,1);
+        //         if (likes_arr[i] === userId ){
+        //             likes_arr.splice(i,1);
                    
                    
-                    Post.findByIdAndUpdate(postId, {$set: {likes: likes_arr}}, function(err, data) {
-                        if (err){
-                            throw err;
-                        } else {
-                            res.status(201).json({message: likes_arr});
-                        }
+        //             Post.findByIdAndUpdate(postId, {$set: {likes: likes_arr}}, function(err, data) {
+        //                 if (err){
+        //                     throw err;
+        //                 } else {
+        //                     res.status(201).json({message: likes_arr});
+        //                 }
                             
                         
-                    })
+        //             })
                     
-                }
-            }
+        //         }
+        //     }
 
-            res.json({message: 'no matches found'})
-        }
+        //     res.json({message: 'no matches found'})
+        // }
 
+        
+        // Post.findByIdAndUpdate(postId, {$pull: {likes: [userId]}}, function(err, data) {
+        //     if (err){
+        //         throw err;
+        //     } else {
+        //         // res.status(201).json({response: req.params.userId});
+        //         res.status(201).json({response: `unappended this id: ${userId}`});
+        //     }
+                
+            
+        // })
+
+        Post.updateOne({postId: '650b24d0825e551ccf70ed32'}, {$pull:{likes:userId}})
+        res.json({message: 'complete'})
     } catch (err){
         res.json({message: err.message});
     }

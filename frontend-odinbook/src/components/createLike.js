@@ -4,50 +4,54 @@ import {useNavigate} from "react-router-dom";
 
 //create like functionality
 const CreateLike = ({postId}) => {
+/////////////////////////////////////////
+//THIS IS DEPRECATED, I MERGED THIS WITH getLikes
+/////////////////////////////////////
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
-    const navigateTimeline = () => {
-        navigate('/timeline');
-    }
+    // const navigateTimeline = () => {
+    //     navigate('/timeline');
+    // }
 
-    const handleLike = (e) => {
-        e.preventDefault();
+    // const handleLike = (e) => {
+    //     e.preventDefault();
         
-        //NOTE: postId already exists so no need to get it
+    //     //NOTE: postId already exists so no need to get it
 
-        //Getting userId
-        const token = localStorage.getItem('token');
-        const decoded = jwt_decode(token);
-        const userId = decoded.id;
+    //     //Getting userId
+    //     const token = localStorage.getItem('token');
+    //     const decoded = jwt_decode(token);
+    //     const userId = decoded.id;
 
-        try{
-            const fetchSettings = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    // 'auth-token': JSON.parse(localStorage.getItem('token'))
-                },
-                body: JSON.stringify({
-                    postId: postId,
-                    userId: userId,
-                })
-            }
+    //     try{
+    //         const fetchSettings = {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //                 // 'auth-token': JSON.parse(localStorage.getItem('token'))
+    //             },
+    //             body: JSON.stringify({
+    //                 postId: postId,
+    //                 userId: userId,
+    //             })
+    //         }
             
-            console.log(userId);
+    //         console.log(userId);
 
-            const postUrl = "http://localhost:4000/posts/" + postId + "/likes?userId=${userId}";
+    //         const postUrl = "http://localhost:4000/posts/" + postId + "/likes?userId=${userId}";
             
-            fetch(postUrl, fetchSettings);
+    //         fetch(postUrl, fetchSettings);
             
-        } catch (err) {
+    //     } catch (err) {
 
-        }
-    }
+    //     }
+    // }
 
-    return (
-        <button className = "likeButton" onClick = {handleLike}> Like the post </button> 
-    )
+    // return (
+    //     <div> Placeholder</div>
+    //     // <button className = "likeButton" onClick = {handleLike}> Like the post </button> 
+    // )
 }
 
 export default CreateLike;

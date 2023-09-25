@@ -36,7 +36,7 @@ const Timeline = () => {
     }, [])
     
     const postList = async () => {
-        const response = await fetch("http://localhost:3000/posts");
+        const response = await fetch("http://localhost:4000/posts");
         setPostData(await response.json());
     }
   

@@ -41,6 +41,83 @@ const GetLikes = ({postId}) => {
         handleGetLikes();
     }, [])
 
+    /////////////////////////////////////////////////////////
+    //Add a  like functionality
+    const navigate = useNavigate();
+
+    const navigateTimeline = () => {
+        navigate('/timeline');
+    }
+
+    const handleLike = (e) => {
+        e.preventDefault();
+        
+        //NOTE: postId already exists so no need to get it
+
+        //Getting userId
+        const token = localStorage.getItem('token');
+        const decoded = jwt_decode(token);
+        const userId = decoded.id;
+
+        try{
+            const fetchSettings = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // 'auth-token': JSON.parse(localStorage.getItem('token'))
+                },
+                body: JSON.stringify({
+                    postId: postId,
+                    userId: userId,
+                })
+            }
+            
+            console.log(userId);
+
+            const postUrl = "http://localhost:4000/posts/" + postId + "/likes?userId=${userId}";
+            
+            fetch(postUrl, fetchSettings);
+            
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    /////////////////////////////////////////////////////////
+    //Unlike functionality
+
+    const handleUnlike = (e) => {
+        e.preventDefault();
+        const token = localStorage.getItem('token');
+        const decoded = jwt_decode(token);
+        const userId = decoded.id;
+
+        try{
+            const fetchSettings = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // 'auth-token': JSON.parse(localStorage.getItem('token'))
+                },
+                body: JSON.stringify({
+                    userId: userId
+                })
+            }
+            
+            console.log(userId);
+
+            const postUrl = "http://localhost:4000/posts/" + postId + "/unlike";
+            console.log(postUrl);
+            fetch(postUrl, fetchSettings);
+            
+        } catch (err) {
+            console.log(err);
+        }
+
+        // window.location.reload(false);
+
+    }
+
     return (
         <div>
              <h1> People who have given likes: </h1>
@@ -52,12 +129,16 @@ const GetLikes = ({postId}) => {
                             return (
                                 <div key = {index}>
                                     <li className = "commentItem" > {data}</li>
+                                    
                                 </div>
+                                
                             )
                         })
                         
                     }
             </ol>
+            <button className = "likeButton" onClick = {handleLike}> Like the post </button> 
+            <button className = "unlikeButton" onClick = {handleUnlike}> Unlike the post </button> 
             
         </div>
        
