@@ -48,7 +48,7 @@ exports.sending_friend_request = async(req, res, next) => {
                 // res.status(200).json({message: 'friend request sent'})
             }
     })
-    res.send('here');
+    res.json({message: 'here'});
     
 
 }
@@ -135,7 +135,7 @@ exports.accepting_friend_request  = async (req, res, next) => {
                 // res.status(200).json({message4: 'friend removed from pending friends array - 4'});
             }
     })
-    res.send('here2');
+    res.json({message: 'here2'});
 
 }
 
@@ -154,7 +154,7 @@ exports.delete_accepted_friend = async (req, res, next) => {
     let targetId = req.params.targetId //The person the current user wants to send to, "target"
 
     //Remove from pending friends list
-    res.send(currUser)
+    // res.send(currUser)
     
     User.findByIdAndUpdate(currUser,
         {$pull: {friends: targetId}},
@@ -180,5 +180,6 @@ exports.delete_accepted_friend = async (req, res, next) => {
                 // res.status(200).json({message4: 'friend removed from pending friends array - 4'});
             }
     })
-    res.send('delete friend complete')
+    res.json({message: 'delete friend complete'})
+    // return;
 }

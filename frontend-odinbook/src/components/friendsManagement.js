@@ -80,7 +80,7 @@ const FriendsManagement = () => {
         
         acceptFriendRequest(userId, e.target.id);
         console.log(userId + '|||||' + e.target.id);
-        console.log('sent pending friend request')
+        console.log('sent accepting friend request')
     }
 
 
@@ -105,7 +105,8 @@ const FriendsManagement = () => {
         
         unfriendingFunction(userId, e.target.id);
         console.log(userId + '|||||' + e.target.id);
-        console.log('sent pending friend request')
+        console.log('unfriending request')
+        
     }
 /*
 Thoughts:
@@ -131,8 +132,8 @@ Thoughts:
                     <br/>
                     ------------------------------------------
                     <button onClick = {handlePendingRequest} id = {data._id}> Add Friend </button>
-                    <button id = {data._id}> Unfriend </button>
-                    <button id = {data._id}> Unfriend </button>
+                    <button onClick = {handleAcceptingFriendRequest} id = {data._id}> Accept friend request </button>
+                    <button onClick = {handleUnfriending} id = {data._id}> Unfriend </button>
                 </div>
                )
             })
