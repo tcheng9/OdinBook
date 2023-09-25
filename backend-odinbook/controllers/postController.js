@@ -134,10 +134,16 @@ exports.post_unlikes = async (req, res, next) => {
     let postId = req.params.postId;
     let userId = req.body.userId;
     
-    // res.status(200).json({name: userId});
+
+    ///////Checker to see if postId/userId are correct
+    // res.status(200).json({
+    //     postname: postId,
+    //     username: userId
+    // });
+
     try {
         
-        await res.post;
+        // await res.post;
         //likes_arr stores the likes for the current post
         let likes_arr = res.post.likes;
        
@@ -174,25 +180,24 @@ exports.post_unlikes = async (req, res, next) => {
         // }
 
         
-        // Post.findByIdAndUpdate(postId, {$pull: {likes: [userId]}}, function(err, data) {
-        //     if (err){
-        //         throw err;
-        //     } else {
-        //         // res.status(201).json({response: req.params.userId});
-        //         res.status(201).json({response: `unappended this id: ${userId}`});
-        //     }
+        Post.findByIdAndUpdate(postId, {$pull: {likes: userId}}, function(err, data) {
+            if (err){
+                throw err;
+            } else {
+                // res.status(201).json({response: req.params.userId});
+                res.status(201).json({response: `unappended this id: ${userId}`});
+            }
                 
             
-        // })
+        })
 
-        Post.updateOne({postId: '650b24d0825e551ccf70ed32'}, {$pull:{likes:userId}})
-        res.json({message: 'complete'})
+        
     } catch (err){
         res.json({message: err.message});
     }
     
 
-   
+   return;
     
 }
 
