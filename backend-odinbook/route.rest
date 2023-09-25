@@ -193,3 +193,18 @@ POST http://localhost:4000/friends/accepted/650de2f2ebc0632606b092fa/650de2f7ebc
 ###
 
 POST http://localhost:4000/friends/delete/650de2f2ebc0632606b092fa/650de2f7ebc0632606b092fc
+
+
+////////
+###
+POST http://localhost:4000/auth/signup
+Content-Type: application/json
+
+{
+    "username": "test101",
+    "password": "test1",
+    "pendingFriendRequests": {
+        "senderCheck": true,
+        "senderId": "testPostnsandl12321a"
+    }
+}

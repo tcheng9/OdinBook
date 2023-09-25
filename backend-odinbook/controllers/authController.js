@@ -17,11 +17,17 @@ exports.login_get = async (req, res, next) => {
 
 exports.signup_post = async (req, res, next) => {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
-    
+    // res.json({
+    //     "sender": req.body.pendingFriendRequests['senderCheck'],
+    //     "senderId": req.body.pendingFriendRequests['senderId']
+    // })
     const user = new User({
         username: req.body.username,
         password: hashedPassword,
-        pendingFriendRequests: [],
+        pendingFriendRequests: [{
+            "senderCheck": req.body.pendingFriendRequests['senderCheck'],
+            "senderId": req.body.pendingFriendRequests['senderId']
+        }],
         friends: [],
         facebookId: 'none for now'
     })
@@ -32,6 +38,7 @@ exports.signup_post = async (req, res, next) => {
     } catch(err){
         res.status(401).json({message: err.message});
     }
+    return;
 
 };
 
