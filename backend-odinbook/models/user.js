@@ -6,7 +6,8 @@ var findOrCreate = require('mongoose-findorcreate')
 const PendingFriendsSchema = new Schema(
     {
         "senderCheck" : {type: Boolean},
-        "senderId": {type: String} //Id of the person who sent the request
+        "senderId": {type: String}, //Id of the person who sent the request
+        _id: false
     }
 )
 

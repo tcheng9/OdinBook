@@ -32,7 +32,8 @@ exports.sending_friend_request = async(req, res, next) => {
     // res.json({'check': senderCheck})
     User.findByIdAndUpdate(currUser,
             {$addToSet: {pendingFriendRequests: {
-            senderCheck: senderCheck, //appending to self SO this is a record of yourself BECAUSE you would want to know if you are the sender BECAUSE when you look at friends management, you use this to update your status
+            senderCheck: senderCheck, //appending to self SO this is a record of yourself BECAUSE you would want to know if you are the sender 
+            //BECAUSE when you look at friends management, you would be the one sending it
             senderId: targetId 
             }}},
             function(err, success){
@@ -46,8 +47,8 @@ exports.sending_friend_request = async(req, res, next) => {
 
     User.findByIdAndUpdate(targetId,
         {$addToSet: {pendingFriendRequests: {
-            senderCheck: !senderCheck,
-            senderId: targetId
+            senderCheck: senderCheck,
+            senderId: currUser
             }}},
         function(err, success){
             if (err){
@@ -119,30 +120,62 @@ exports.accepting_friend_request  = async (req, res, next) => {
     //Remove from pending friends list
     
     
-     User.findByIdAndUpdate(currUser,
-        {$pull: {pendingFriendRequests: targetId}},
-        function(err, success){
-            if (err){
-                console.log(err)
-                // res.status(401).json({err3:err.message});
-            } else {
-                console.log('working3')
-                // res.status(200).json({message3: 'friend removed from pending friends array - 3'});
-            }
-    })
+    //  User.findByIdAndUpdate(currUser,
+    //     {$pull: {pendingFriendRequests: targetId}},
+    //     function(err, success){
+    //         if (err){
+    //             console.log(err)
+    //             // res.status(401).json({err3:err.message});
+    //         } else {
+    //             console.log('working3')
+    //             // res.status(200).json({message3: 'friend removed from pending friends array - 3'});
+    //         }
+    // })
 
-    User.findByIdAndUpdate(targetId,
-        {$pull: {pendingFriendRequests: currUser}},
+    // User.findByIdAndUpdate(targetId,
+    //     {$pull: {pendingFriendRequests: currUser}},
+    //     function(err, success){
+    //         if (err){
+    //             console.log(err)
+    //             // res.status(401).json({err: err.message});
+                
+    //         } else {
+                
+    //             // res.status(200).json({message4: 'friend removed from pending friends array - 4'});
+    //         }
+    // })
+
+    User.findOneAndUpdate(
+        {_id: currUser},
+        {$pull: {pendingFriendRequests: {senderId: targetId}}},
+        {safe:true, multi:false},
         function(err, success){
-            if (err){
-                console.log(err)
-                // res.status(401).json({err: err.message});
-                
-            } else {
-                
-                // res.status(200).json({message4: 'friend removed from pending friends array - 4'});
-            }
-    })
+                    if (err){
+                        console.log(err)
+                        // res.status(401).json({err: err.message});
+                        
+                    } else {
+                        console.log('inside1')
+                        // res.status(200).json({message4: 'friend removed from pending friends array - 4'});
+                    }
+                }
+    )
+
+    User.findOneAndUpdate(
+        {_id: targetId},
+        {$pull: {pendingFriendRequests: {senderId: currUser}}},
+        {safe:true, multi:false},
+        function(err, success){
+                    if (err){
+                        console.log(err)
+                        // res.status(401).json({err: err.message});
+                        
+                    } else {
+                        console.log('inside2')
+                        // res.status(200).json({message4: 'friend removed from pending friends array - 4'});
+                    }
+                }
+    )
     res.json({message: 'here2'});
 
 }

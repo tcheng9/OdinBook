@@ -213,9 +213,13 @@ Content-Type: application/json
 //
 ###
 //Send a pending friend request 
-POST http://localhost:4000//friends/pending/650de2f7ebc0632606b092fc/6372db509aa24a60698426b6
+POST http://localhost:4000/friends/pending/650de2f7ebc0632606b092fc/6511da7c3b6190ca7f0ec71d
 Content-Type: application/json
 
 {
     "senderCheck":true
 }
+
+###
+POST http://localhost:4000/friends/accepted/65135bbb969093769b2bddd2/65135bb5969093769b2bddd0
+
