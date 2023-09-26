@@ -128,6 +128,7 @@ Thoughts:
                 
                 let val1;
                 let val2;
+                // let val2 = data['pendingFriendRequests'][0].senderId;
                 // if (data.pendingFriendRequests.length != 0){
                 //     // val1 = data.pendingFriendRequests[0].senderCheck
                 //     val2 = data.pendingFriendRequests[0].senderId
@@ -151,12 +152,14 @@ Thoughts:
                 
                 if (data['pendingFriendRequests'].length > 0){
                     console.log(data['pendingFriendRequests'][0].senderCheck)
+                    val2 = data['pendingFriendRequests'][0].senderId;
                     if (data['pendingFriendRequests'][0].senderCheck === true){
                         val1 = "true"
                     } else {
                         val1 = "false";
                     }
                 
+                    
                 }
 
                return (
@@ -172,7 +175,7 @@ Thoughts:
                         <br/> 
                         {val2}
                     </div>
-                    <button onClick = {handlePendingRequest} id = {data._id}> Add Friend </button>
+                    <button onClick = {handlePendingRequest} id = {data._id}> Send Pending Friend </button>
                     <button onClick = {handleAcceptingFriendRequest} id = {data._id}> Accept friend request </button>
                     <button onClick = {handleUnfriending} id = {data._id}> Unfriend </button>
                     ------------------------------------------
