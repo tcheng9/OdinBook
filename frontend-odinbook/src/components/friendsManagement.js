@@ -15,15 +15,15 @@ const FriendsManagement = () => {
         }
     
         const url = "http://localhost:4000/auth";
-    
+        
         fetch(url, requestOptions)
         .then((response => response.json()))
         .then((data) => {
             setUsersList(Object.values(data)[0]);
             
-            // console.log('data');
+            console.log('data');
            
-            // console.log(data);
+            console.log(data);
             // console.log('usersList');
             // console.log(usersList);
         })
@@ -48,7 +48,13 @@ const FriendsManagement = () => {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
-            }
+            }, 
+            body: 
+                JSON.stringify({
+                    senderCheck: true
+
+                })
+            
         }
         fetch(url, fetchSettings);
     }
@@ -128,27 +134,7 @@ Thoughts:
                 
                 let val1;
                 let val2;
-                // let val2 = data['pendingFriendRequests'][0].senderId;
-                // if (data.pendingFriendRequests.length != 0){
-                //     // val1 = data.pendingFriendRequests[0].senderCheck
-                //     val2 = data.pendingFriendRequests[0].senderId
-                //     // console.log(data.pendingFriendRequests[0].senderCheck)
-                //     console.log(data.pendingFriendRequests[0].senderId)
-                // // }
-                // console.log(data['pendingFriendRequests']);
-                //////////////////////////
-                // if (data.pendingFriendRequests[0].senderCheck === undefined){
-                //     // console.log(data.pendingFriendRequests[0].senderCheck)
-                //     console.log(data);
-                // }
-
-                //////////////////////////////////
-                // if (data.pendingFriendRequests[0].senderCheck && data.pendingFriendRequests[0].senderCheck === true){
-                //     val1 = "true"
-                // } else {
-                //     val1 = "false"
-                // }
-
+                
                 
                 if (data['pendingFriendRequests'].length > 0){
                     console.log(data['pendingFriendRequests'][0].senderCheck)

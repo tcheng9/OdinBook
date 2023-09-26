@@ -27,9 +27,14 @@ exports.sending_friend_request = async(req, res, next) => {
     let targetId = req.params.targetId //The person the current user wants to send to, "target"
      //sept2023-10 = 650de2f2ebc0632606b092fa
     //sept2023-11 = 650de2f7ebc0632606b092fc
-
+    
+    let senderCheck = req.body.senderCheck //This checks if the curr user is the sender OR target/sendee
+    // res.json({'check': senderCheck})
     User.findByIdAndUpdate(currUser,
-            {$addToSet: {pendingFriendRequests: targetId}},
+            {$addToSet: {pendingFriendRequests: {
+            senderCheck: senderCheck, //appending to self SO this is a record of yourself BECAUSE you would want to know if you are the sender BECAUSE when you look at friends management, you use this to update your status
+            senderId: targetId 
+            }}},
             function(err, success){
                 if (err){
                     // res.status(401).json({err: err.message})
@@ -40,7 +45,10 @@ exports.sending_friend_request = async(req, res, next) => {
         })
 
     User.findByIdAndUpdate(targetId,
-        {$addToSet: {pendingFriendRequests: currUser}},
+        {$addToSet: {pendingFriendRequests: {
+            senderCheck: !senderCheck,
+            senderId: targetId
+            }}},
         function(err, success){
             if (err){
                 // res.status(401).json({err: err.message})
@@ -49,7 +57,7 @@ exports.sending_friend_request = async(req, res, next) => {
             }
     })
     res.json({message: 'here'});
-    
+    return;
 
 }
 

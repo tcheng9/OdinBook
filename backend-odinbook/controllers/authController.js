@@ -24,10 +24,11 @@ exports.signup_post = async (req, res, next) => {
     const user = new User({
         username: req.body.username,
         password: hashedPassword,
-        pendingFriendRequests: [{
-            "senderCheck": req.body.pendingFriendRequests['senderCheck'],
-            "senderId": req.body.pendingFriendRequests['senderId']
-        }],
+        // pendingFriendRequests: [{
+        //     "senderCheck": req.body.pendingFriendRequests['senderCheck'],
+        //     "senderId": req.body.pendingFriendRequests['senderId']
+        // }],
+        pendingFriendRequests: [],
         friends: [],
         facebookId: 'none for now'
     })

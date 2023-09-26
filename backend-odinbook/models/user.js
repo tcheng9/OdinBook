@@ -5,7 +5,7 @@ var findOrCreate = require('mongoose-findorcreate')
 
 const PendingFriendsSchema = new Schema(
     {
-        "senderCheck" : {type: Boolean},  //Checks if the user is the sender or sendee -> used for friends management page
+        "senderCheck" : {type: Boolean},
         "senderId": {type: String} //Id of the person who sent the request
     }
 )
@@ -24,3 +24,8 @@ const UserSchema = new Schema(
 
 var User = UserSchema.plugin(findOrCreate);
 module.exports = mongoose.model('user', UserSchema);
+
+
+// "senderCheck" : {type: Boolean},  //Checks if the user is the sender or sendee -> used for friends management page
+        //True: the current user sent the request. 
+        //False: the current user received the request

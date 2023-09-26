@@ -169,7 +169,7 @@ Content-Type: application/json
 //likes -> 650128b1fa256bb871fb51ac / test1 /test2 
 
 
-///////////// Testing FRIENDS SYSTEM functionalities
+///////////// Testing FRIENDS SYSTEM functionalities -> (originally, pending friend request) 
 ###
 //Get all pending friend requests
 GET http://localhost:4000/friends/pending/650c78b847d9e8e3b9cbfa4d
@@ -207,4 +207,15 @@ Content-Type: application/json
         "senderCheck": true,
         "senderId": "testPostnsandl12321a"
     }
+}
+
+///////////// Testing FRIENDS SYSTEM functionalities  BUT using an array of objects instead of the original array
+//
+###
+//Send a pending friend request 
+POST http://localhost:4000//friends/pending/650de2f7ebc0632606b092fc/6372db509aa24a60698426b6
+Content-Type: application/json
+
+{
+    "senderCheck":true
 }
