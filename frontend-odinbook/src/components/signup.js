@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {useState} from 'react';
 import {useNavigate} from "react-router-dom";
+import './css/signup.css';
 
 function Signup(){
     const navigate = useNavigate();
