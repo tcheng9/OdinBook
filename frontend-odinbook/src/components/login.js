@@ -1,6 +1,7 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
 import {useState} from 'react';
+import './css/login.css';
 
 function Login(){
 
@@ -46,23 +47,45 @@ function Login(){
             navigateTimeline();
         }
     return (
+      
+      <body className = "login-page">
 
-      <div>
-        <form id = "login">
-          <h1> Login Form </h1>
-          <label htmlFor = "username"> Username: </label> <br/>
-          <input onChange={(e) => handleLogin(e)} value = {loginData.username} type = "text"  id = "username" name = "username"/> <br/>
+      
+          <div className = "login-wrapper">
+            <div className = "login-info">
+                <div className = "login-info-wrapper">
+                    <h1 className = "login-info-header"> OdinBook </h1>
+                    <div className = "login-info-text" >
+                        Connect with friends and the world around you on OdinBook
+                    </div>
+                </div>
+            </div>
 
-          <label htmlFor = "password"> Password: </label> <br/>
-          <input onChange={(e) => handleLogin(e)} value = {loginData.password} type = "text" id = "password" name = "password"/> <br/>
+            <div className = "login-form-wrapper">
+              <form className = "login-form" id = "login">
+                
+                <h1 className = "login-title"> Login Form </h1>
+                <div className = "login-input-wrapper">
+                  <input onChange={(e) => handleLogin(e)} value = {loginData.username} type = "text"  id = "username" name = "username" placeholder = "Username"/>
 
-          <button onClick = {loginSubmit}> Login </button> 
-        </form>
+                </div>
+                  
+                <div className = "login-input-wrapper">
+                  <input className = "login-input" onChange={(e) => handleLogin(e)} value = {loginData.password} type = "text" id = "password" name = "password" placeholder = "Password"/> 
 
-        <a href = "/signup"> Sign up</a>
+                </div>
+                  
+                <div className = "login-button-wrapper">
+                  <button className = "login-form-button" onClick = {loginSubmit}> Login </button> 
+                </div>
+                
+              </form>
 
-      </div>
-        
+              <a href = "/signup"> Sign up</a>
+
+            </div>
+          </div>
+        </body>
     )
 }
 

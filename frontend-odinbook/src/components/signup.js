@@ -50,20 +50,21 @@ function Signup(){
 
 
     return (
+        <body>
         <div className = "signup-wrapper">
 
-            <div className = "signup-info">
+            {/* <div className = "signup-info">
                 <div className = "signup-info-wrapper">
                     <h1 className = "signup-info-header"> OdinBook </h1>
                     <div className = "signup-info-text" >
                         Connect with friends and the world around you on OdinBook
                     </div>
                 </div>
-            </div>
+            </div> */}
         
             <div className = "signup-form" > 
                 <form className = "form-wrapper" id = "signup">
-                    {/* <h1 className = "form-title"> Sign Up </h1>     */}
+                    <h1 className = "form-title"> Sign Up </h1>    
                     <div className = "input-wrapper">
                         {/* <label htmlFor = "username"> Username: </label> <br/> */}
                         <input onChange={(e) => handle(e)} value = {data.username} type = "text"  id = "username" name = "username" placeholder = "Username">
@@ -78,9 +79,11 @@ function Signup(){
                     </div>
                     
                     <button className = "form-button" onClick = {signupSubmit}> Sign Up </button> 
-                </form>
+                    </form>
+                    <a href = "/signup"> Login </a>
             </div>
         </div>
+        </body>
     )
 }
 
