@@ -50,16 +50,22 @@ function Signup(){
 
 
     return (
-        <div> 
-        <form id = "signup">
-          <label htmlFor = "username"> Username: </label> <br/>
-          <input onChange={(e) => handle(e)} value = {data.username} type = "text"  id = "username" name = "username"/> <br/>
+        <div className = "signup-form" > 
+            <form className = "form-wrapper" id = "signup">
+                <h1 className = "form-title"> Sign Up </h1>    
+                <div className = "input-wrapper">
+                    <label htmlFor = "username"> Username: </label> <br/>
+                    <input onChange={(e) => handle(e)} value = {data.username} type = "text"  id = "username" name = "username"/> <br/>
 
-          <label htmlFor = "password"> Password: </label> <br/>
-          <input onChange={(e) => handle(e)} value = {data.password} type = "text" id = "password" name = "password"/> <br/>
-
-          <button onClick = {signupSubmit}> Sign Up </button> 
-        </form>
+                </div>
+                
+                <div className = "input-wrapper">
+                    <label htmlFor = "password"> Password: </label> <br/>
+                    <input onChange={(e) => handle(e)} value = {data.password} type = "text" id = "password" name = "password"/> <br/>
+                </div>
+                
+                <button onClick = {signupSubmit}> Sign Up </button> 
+            </form>
         </div>
     )
 }
