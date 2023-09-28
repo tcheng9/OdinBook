@@ -1,6 +1,6 @@
 import React from 'react';
 import {useEffect, useState} from 'react';
-import "./timeline.css";
+import "./css/timeline.css";
 import CreateComment from './createComment';
 import Comment from "./comment";
 import CreateLike from "./createLike";
@@ -65,43 +65,84 @@ const Timeline = () => {
     return (
         
         <div>
-            <a href = "/createpost"> Create a post </a> <br/>
-            <a href = "/createprofile"> Create a profile </a>  <br/> 
-            <a href = "/profiles"> View all profiles </a>   <br/>
-            <a href = "/friendsmanagement"> Friends management page </a>  <br/>  
+
             
+            <header className = "timeline-header">
 
+                    <div className = "header-wrapper">
+                        Logo
+                    </div>
+                    
+                    <div className = "header-wrapper">
+                        <a href = "/createpost"> <p> Create a post </p> </a> 
 
-            <h1> Hello from timeline </h1>    
-            <ol>
+                    
 
+                   
+                        <a href = "/createprofile"> <p> Create a profile </p> </a>  
+                    
+                
+                    
+                        <a href = "/profiles"> <p> View all profiles </p> </a>   
+                   
+
+                    
+                        <a href = "/friendsmanagement"> <p> Friends management page </p> </a>  
+                   
+                    </div>
+                        
+                 
+               
+            </header>
+           
+
+            
+            <div className = "all-post-wrapper">
+
+            
            {/* Mapping through post data and displaying each individual post */}
             {postData.map((data) => {
                 return (
-                    <div key = {data._id}>
-                        <li className = "postItem"> {data.title} </li>
-                         <li className = "postItem"> {data._id} </li>
-                         {/* <form id = "comment">
-                            <h1> comment Form </h1>
+                    <div key = {data._id} className = "single-post-wrapper">
+                        <div className = "post-header-wrapper">
+                            
+                            <h1 className = "post-title"> TITLE: {data.title}</h1>
+                        
+                            <div className = "header-child-wrapper">
+                                    <p> (PLACEHOLDER) this will display time </p>
+                                <button onClick = {deletePost} id = {data._id}>
+                                    Delete this post
+                                </button>
+                            </div>
+                            
+                        </div>
+                        
+                        <div className = "post-content">
+                            POST CONTENT {data.message}
+                        </div>
 
-                            <label htmlFor = "comment"> Comment: </label> <br/>
-                            <input onChange={(e) => handleComment(e)} value = {comment.comment} type = "text" id = "comment" name = "comment"/> <br/>
+                      
+                        <div className = "post-buttons">
+                                -------------BUTTONS GO HERE ------------
+                        </div>    
 
-                            <button onClick = {commentSubmit}> Login </button> 
-                        </form> */}
-                        <button onClick = {deletePost} id = {data._id}>
-                            Delete this post
-                        </button>
-                        <CreateComment postId = {data._id}/>
-                        <Comment postId = {data._id} />
-                        <CreateLike postId = {data._id} />
+                        <div className = "create-comment">
+                            <CreateComment postId = {data._id}/>
+                        </div>
+                        
+                        <div className = "comments">
+                            <Comment postId = {data._id} />
+                        </div>
+                        
+                  
                         <GetLikes postId = {data._id} />
                         
                     </div>
                     
                 )
             })}
-            </ol>
+             
+            </div>
         
             
         </div>

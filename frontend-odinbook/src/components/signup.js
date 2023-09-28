@@ -50,7 +50,7 @@ function Signup(){
 
 
     return (
-        <body>
+        
         <div className = "signup-wrapper">
 
             {/* <div className = "signup-info">
@@ -83,7 +83,7 @@ function Signup(){
                     <a href = "/signup"> Login </a>
             </div>
         </div>
-        </body>
+        
     )
 }
 

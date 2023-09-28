@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import jwt_decode from "jwt-decode";
 import {useState} from "react";
-
+import "./css/comment.css"
 const Comment = ({postId}) => {
 
         const [fetchData, setFetchData] = useState([]);
