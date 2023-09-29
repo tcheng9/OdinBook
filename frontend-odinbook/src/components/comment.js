@@ -5,7 +5,7 @@ import "./css/comment.css"
 const Comment = ({postId}) => {
 
         const [fetchData, setFetchData] = useState([]);
-
+        const [commentsLength, setCommentsLength] = useState(0);
         //Function to get all comments existing in the database
         const handleGetAllComments = () => {
             try{
@@ -21,9 +21,9 @@ const Comment = ({postId}) => {
                 .then(response => response.json())
                 .then(data => {
                     setFetchData(data);
-                    console.log('comments:')
-                    console.log(data);
-
+                    // console.log('comments:')
+                    // console.log(data);
+                    setCommentsLength(data.length);
                 });
 
 
@@ -61,15 +61,36 @@ const Comment = ({postId}) => {
             })
         };
 
+        //button to show/hide the list of all comments
+      
 
+        let showhidecommentsdiv = document.getElementById('testhideshow');
+        
+        let display = 0;
+    
+        
+        const showHideComments = () => {
+
+            if (display === 1){
+                showhidecommentsdiv.style.display = 'block';
+                display = 0;
+            } else if (display === 0) {
+                showhidecommentsdiv.style.display = 'none';
+                display = 1;
+            }
+        }
     return (
         <div>
             {/* <h1>  Testing comnnection </h1>
             <h1> {postId} </h1>  */}
             
             <div>
+                <div> Length of comments {commentsLength}</div>
                 <h1> Comments: </h1>
-                <ol> 
+               
+                    
+                <div id = "testhideshow">
+                    <ol> 
                     {
                         fetchData.map((data, index) => {
                             return (
@@ -83,7 +104,10 @@ const Comment = ({postId}) => {
                         })
                         
                     }
-                </ol>
+                    </ol>
+                </div>
+
+                <button onClick = {showHideComments}> Show Comments </button>
             </div>
         </div>
     )

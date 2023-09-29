@@ -7,7 +7,7 @@ import './css/get-likes.css'
 
 const GetLikes = ({postId}) => {
     const [fetchData, setFetchData] = useState([]);
-
+    const [likesLength, setLikesLength] = useState(0);
 
     const handleGetLikes = () => {
         console.log('handle likes');
@@ -26,8 +26,15 @@ const GetLikes = ({postId}) => {
             .then(response => response.json())
             .then(data => {
                 setFetchData(data.likes);
+                setLikesLength(data.likes.length);
+             
                 // console.log('likes data:');
-                // // console.log(data.likes);
+                // if(data.likes.length != 0){
+                //     console.log('andlkandsa')
+                //     console.log(data.likes.length);
+                // } else {
+                //     continue;
+                // }
                 // console.log(data.likes);
             })
             
@@ -118,25 +125,65 @@ const GetLikes = ({postId}) => {
 
     }
 
+
+    //Testing how to show/hide a likes div that provides a list of all divs
+    let showhidediv = document.getElementById('showhide');
+    let display = 0;
+   
+    const showHideLikes = () => {
+        
+        if (display === 1){
+            showhidediv.style.display = 'block';
+            display = 0;
+        } else {
+            showhidediv.style.display = 'none';
+            display = 1;
+        }
+    }
+
     return (
+        
+        
         <div>
              <h1> People who have given likes: </h1>
-
+                
             
-            <ol> 
-                    {
-                        fetchData.map((data, index) => {
-                            return (
-                                <div key = {index}>
-                                    <li className = "commentItem" > {data}</li>
-                                    
-                                </div>
-                                
-                            )
-                        })
-                        
-                    }
-            </ol>
+                <div>
+                    <p>  Total: {likesLength} </p>
+                </div>
+
+                <div id = "showhide">
+                    Testing to hide this div
+
+                    <ul> 
+                                        
+                                        <button> 
+                                                
+                                        </button>
+                                        {
+                                            
+                                            fetchData.map((data, index) => {
+                                                
+                                                return (
+                                                    <div>
+                                                        <div key = {index}>
+                                                            <li className = "commentItem" > {data}</li>
+                                                        
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    
+                                                    
+                                                )
+                                            })
+                                            
+                                        }
+                                </ul>
+
+                </div>
+
+                <button onClick = {showHideLikes}> Show Likes </button>
+           
             <button className = "likeButton" onClick = {handleLike}> Like the post </button> 
             <button className = "unlikeButton" onClick = {handleUnlike}> Unlike the post </button> 
             
