@@ -106,7 +106,7 @@ const Timeline = () => {
                     <div key = {data._id} className = "single-post-wrapper">
                         <div className = "post-header-wrapper">
                             
-                            <h1 className = "post-title"> TITLE: {data.title}</h1>
+                            <h1 className = "post-title"> AACTUALLY THIS NEEDS TO BE USER ID, NOT TITLE: {data.title}</h1>
                         
                             <div className = "header-child-wrapper">
                                     <p> (PLACEHOLDER) this will display time </p>
@@ -122,9 +122,7 @@ const Timeline = () => {
                         </div>
 
                       
-                        <div className = "post-buttons">
-                                -------------BUTTONS GO HERE ------------
-                        </div>    
+                      
 
                         <div className = "create-comment">
                             <CreateComment postId = {data._id}/>

@@ -145,15 +145,11 @@ const GetLikes = ({postId}) => {
         
         
         <div>
-             <h1> People who have given likes: </h1>
-                
+             
             
-                <div>
-                    <p>  Total: {likesLength} </p>
-                </div>
-
+               
                 <div id = "showhide">
-                    Testing to hide this div
+                   
 
                     <ul> 
                                         
@@ -167,7 +163,7 @@ const GetLikes = ({postId}) => {
                                                 return (
                                                     <div>
                                                         <div key = {index}>
-                                                            <li className = "commentItem" > {data}</li>
+                                                            <div className = "commentItem" > Comment: {data}</div> 
                                                         
                                                         </div>
                                                         

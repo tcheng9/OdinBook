@@ -85,17 +85,19 @@ const Comment = ({postId}) => {
             <h1> {postId} </h1>  */}
             
             <div>
-                <div> Length of comments {commentsLength}</div>
-                <h1> Comments: </h1>
                
+               
+               <button className = "btn-showhidecomments"> 
+                    Number of Comments: {commentsLength}
+                </button>
                     
                 <div id = "testhideshow">
-                    <ol> 
+                    
                     {
                         fetchData.map((data, index) => {
                             return (
                                 <div key = {data._id}>
-                                    <li className = "commentItem"> {data.text}</li>
+                                    <div className = "commentItem"> {data.text}</div>
                                     <button onClick = {deleteComment} id = {data._id}>
                                         Delete this comment
                                     </button>
@@ -104,7 +106,7 @@ const Comment = ({postId}) => {
                         })
                         
                     }
-                    </ol>
+                    
                 </div>
 
                 <button onClick = {showHideComments}> Show Comments </button>
