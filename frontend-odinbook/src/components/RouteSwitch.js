@@ -17,7 +17,7 @@ import FriendsManagement from "./friendsManagement";
 
 const RouteSwitch = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename = "/index.html">
       <Routes>
         <Route path="/" element={[<App />, <Login />]} />
         <Route path = "/facebook" element = {<FacebookLogin />} />
