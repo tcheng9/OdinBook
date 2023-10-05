@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, BrowserRouter, Routes, Route } from "react-router-dom";
 import React from 'react';
 //Route files
 import App from "../App";
@@ -17,7 +17,7 @@ import FriendsManagement from "./friendsManagement";
 
 const RouteSwitch = () => {
   return (
-    <BrowserRouter basename = "/index.html">
+    <HashRouter basename = "/index.html">
       <Routes>
         <Route path="/" element={[<App />, <Login />]} />
         <Route path = "/facebook" element = {<FacebookLogin />} />
@@ -33,7 +33,7 @@ const RouteSwitch = () => {
         <Route path = "/friendsmanagement" element = {<FriendsManagement />} />
 
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
