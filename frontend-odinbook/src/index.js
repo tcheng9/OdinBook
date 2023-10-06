@@ -13,7 +13,9 @@ root.render(
         <RouteSwitch>
             
         </RouteSwitch>
-        
+        <div>
+            1
+        </div>
     </React.StrictMode>
     
 );
