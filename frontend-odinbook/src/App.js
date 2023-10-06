@@ -4,9 +4,7 @@ import RouteSwitch from './components/RouteSwitch';
 
 function App() {
   
-    return (
-        <RouteSwitch />
-    )
+    
   
   
   
