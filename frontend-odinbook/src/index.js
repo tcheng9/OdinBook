@@ -11,11 +11,9 @@ root.render(
 
     <React.StrictMode>
         <RouteSwitch>
-            asdasda
+            
         </RouteSwitch>
-        <div>
-            askldnaklsndklasndlkasndklsan
-        </div>
+        
     </React.StrictMode>
     
 );
