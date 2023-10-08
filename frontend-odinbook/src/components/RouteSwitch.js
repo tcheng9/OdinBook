@@ -17,7 +17,7 @@ import FriendsManagement from "./friendsManagement";
 
 const RouteSwitch = () => {
   return (
-    <HashRouter basename = "/">
+    <BrowserRouter basename = "/">
       <Routes>
         <Route path="/" element={[<App />, <Login />]} />
         <Route path = "/facebook" element = {<FacebookLogin />} />
@@ -33,7 +33,7 @@ const RouteSwitch = () => {
         <Route path = "/friendsmanagement" element = {<FriendsManagement />} />
 
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 

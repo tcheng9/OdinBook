@@ -4,13 +4,17 @@ import {useState} from 'react';
 import './css/login.css';
 
 function Login(){
-
+    //Gives button navigation functionality to redirect to a new page
     const navigate = useNavigate();
 
     const navigateTimeline = () => {
         navigate('/timeline');
     }
 
+
+    const navigateSignup = () => {
+      navigate('/signup');
+    }
 
     const [loginData, setLoginData] = useState({
         username: '',
@@ -65,23 +69,35 @@ function Login(){
               <form className = "login-form" id = "login">
                 
                 <h1 className = "login-title"> Login Form </h1>
+               
                 <div className = "login-input-wrapper">
-                  <input onChange={(e) => handleLogin(e)} value = {loginData.username} type = "text"  id = "username" name = "username" placeholder = "Username"/>
-
+                  <input  className = "login-input" onChange={(e) => handleLogin(e)} value = {loginData.username} type = "text"  id = "username" name = "username" placeholder = "Username"/>
+                  
                 </div>
                   
                 <div className = "login-input-wrapper">
                   <input className = "login-input" onChange={(e) => handleLogin(e)} value = {loginData.password} type = "text" id = "password" name = "password" placeholder = "Password"/> 
 
                 </div>
-                  
+                                  
+             
+                
+           
+               
                 <div className = "login-button-wrapper">
-                  <button className = "login-form-button" onClick = {loginSubmit}> Login </button> 
+                  <button className = "login-form-button" onClick = {loginSubmit}> Log in </button> 
                 </div>
                 
               </form>
 
-              <a href = "/signup"> Sign up</a>
+              <hr className = "login-signup-split-line"/> 
+
+              <div className = "signup-link-wrapper">
+                <button className = "signup-link-button" onClick = {navigateSignup}>
+                    Create a New Account
+                </button>
+              </div>
+              
 
             </div>
           </div>
