@@ -12,9 +12,9 @@ function Login(){
     }
 
 
-    // const navigateSignup = () => {
-    //   navigate('/signup');
-    // }
+    const navigateSignup = () => {
+      navigate('/signup');
+    }
 
     const [loginData, setLoginData] = useState({
         username: '',
@@ -93,9 +93,9 @@ function Login(){
               <hr className = "login-signup-split-line"/> 
 
               <div className = "signup-link-wrapper">
-                {/* <button className = "signup-link-button" onClick = {navigateSignup}>
+                <button className = "signup-link-button" onClick = {navigateSignup}>
                     Create a New Account
-                </button> */}
+                </button>
               </div>
               
 

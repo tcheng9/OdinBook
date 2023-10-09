@@ -5,9 +5,11 @@ import CreateComment from './createComment';
 import Comment from "./comment";
 import CreateLike from "./createLike";
 import GetLikes from "./getLikes";
-
+import {useNavigate} from "react-router-dom";
+import jwt_decode from "jwt-decode";
 const Timeline = () => {
 
+    
     const [postData, setPostData] = useState([]);
 
     const [comment, setComment] = useState({
@@ -16,7 +18,13 @@ const Timeline = () => {
 
     const [postId, setPostId] = useState('');
 
-   
+
+    //Getting userId
+    const token = localStorage.getItem('token');
+    const decoded = jwt_decode(token);
+    const userId = decoded.id;
+
+
 
     function handleComment(e) {
         const newData = {...comment};
@@ -62,6 +70,32 @@ const Timeline = () => {
         })
     };
 
+    //Writing navigate buttons for headers
+    const navigate = useNavigate();
+
+    const navigateCreatePost = () => {
+        navigate('/createpost')
+    }
+
+    const navigateCreateProfile = () => {
+        navigate('/createprofile');
+    }
+
+    const navigateProfiles = () => {
+        navigate('/profiles');
+
+    }
+
+    const navigateFriendsManagement = () => {
+        navigate('/friendsmanagement');
+    }
+
+
+    const navigateCurrentUserProfile = () => {
+        navigate('/profiles/' + userId);
+    }
+    
+
     return (
         
         <div>
@@ -74,28 +108,36 @@ const Timeline = () => {
                     </div>
                     
                     <div className = "header-wrapper">
-                        <a href = "/createpost"> <p> Create a post </p> </a> 
 
-                    
+                        <button className = "timeline-header-btn" onClick = {navigateCreatePost}>
+                            Create Post
+                        </button>
 
-                   
-                        <a href = "/createprofile"> <p> Create a profile </p> </a>  
-                    
-                
-                    
-                        <a href = "/profiles"> <p> View all profiles </p> </a>   
-                   
+                        <button className = "timeline-header-btn" onClick = {navigateCreateProfile}>
+                            Create Profile Info
+                        </button>
 
-                    
-                        <a href = "/friendsmanagement"> <p> Friends management page </p> </a>  
-                   
+                        {/* <button className = "profiles-router-btn" onClick = {navigateProfiles}>
+                            
+                        </button> */}
+
+                        <button className = "timeline-header-btn" onClick = {navigateFriendsManagement}>
+                            Friends List
+                        </button>
+
+                        <button className = "timeline-header-btn" onClick = {navigateCurrentUserProfile}>
+                            My profile
+                        </button>
+
                     </div>
                         
                  
                
             </header>
            
-
+            <div>
+                Current user id - remove later: {userId}
+            </div>
             
             <div className = "all-post-wrapper">
 
@@ -128,12 +170,14 @@ const Timeline = () => {
                             <CreateComment postId = {data._id}/>
                         </div>
                         
-                        <div className = "comments">
+                        <div className = "comments-div">
                             <Comment postId = {data._id} />
                         </div>
                         
-                  
-                        <GetLikes postId = {data._id} />
+                        <div className = "likes-div">
+                            <GetLikes postId = {data._id} />
+                        </div>
+                        
                         
                     </div>
                     

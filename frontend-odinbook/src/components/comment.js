@@ -6,6 +6,7 @@ const Comment = ({postId}) => {
 
         const [fetchData, setFetchData] = useState([]);
         const [commentsLength, setCommentsLength] = useState(0);
+        const [show, setShow] = useState(false) //used to show/hide all comments by default -> depends on how you want to initially load comments on a page
         //Function to get all comments existing in the database
         const handleGetAllComments = () => {
             try{
@@ -79,6 +80,15 @@ const Comment = ({postId}) => {
                 display = 1;
             }
         }
+
+
+    const showOrHideAllComments = () => {
+        if (show === true){
+            setShow(false);
+        } else {
+            setShow(true);
+        }
+    }
     return (
         <div>
             {/* <h1>  Testing comnnection </h1>
@@ -87,11 +97,11 @@ const Comment = ({postId}) => {
             <div>
                
                
-               <button className = "btn-showhidecomments"> 
+               {/* <button className = "btn-showhidecomments"> 
                     Number of Comments: {commentsLength}
-                </button>
+                </button> */}
                     
-                <div id = "testhideshow">
+                {/* <div id = "testhideshow">
                     
                     {
                         fetchData.map((data, index) => {
@@ -107,9 +117,27 @@ const Comment = ({postId}) => {
                         
                     }
                     
-                </div>
-
-                <button onClick = {showHideComments}> Show Comments </button>
+                </div> */}
+                {
+                    show ? <div id = "testhideshow">
+                    
+                        {
+                            fetchData.map((data, index) => {
+                                return (
+                                    <div key = {data._id}>
+                                        <div className = "commentItem"> {data.text}</div>
+                                        <button onClick = {deleteComment} id = {data._id}>
+                                            Delete this comment
+                                        </button>
+                                    </div>
+                                )
+                            })
+                            
+                        }
+                        
+                    </div> : null
+                }
+                <button onClick = {showOrHideAllComments}> Show Comments </button>
             </div>
         </div>
     )

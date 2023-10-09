@@ -19,7 +19,7 @@ const DynamicProfiles = ({postId}) => {
             method: 'GET',
         }
 
-        const fetchUrl = 'http://localhost:3000/profile/create/' + id;
+        const fetchUrl = 'http://localhost:4000/profile/create/' + id;
 
         fetch(fetchUrl, requestOptions)
             .then((response) => response.json())
@@ -45,7 +45,7 @@ const DynamicProfiles = ({postId}) => {
                     {
                         profileInfo.map((data) => {
                             
-                            const imgUrl = 'http://localhost:3000/' + data.profileImage
+                            const imgUrl = 'http://localhost:4000/' + data.profileImage
 
                             return(
                                 <div key ={data._id}>

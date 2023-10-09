@@ -1,22 +1,36 @@
 /* .postItem {
     border: 5px solid black;
 } */
-
+/* Styling the header */
 .timeline-header{
     display:flex;
     justify-content: space-between;
     position:sticky;
     top: 0;
-    background-color:salmon;
+    background-color:#FFFFFF;
     height:50px;
 
 }
 
+/* Timeline header buttons styling */
+
+.timeline-header-btn{
+    background: transparent;
+    border: 0px;
+    color: #0866FF;
+    
+    padding: 0px 10px;
+    
+}   
+
 .header-wrapper{
     display:flex;
-    
+    color:#0866FF;
+    padding:15px;
 }
 
+
+/* styling post section */
 .single-post-wrapper{
     height:700px;
     width:725px;
@@ -78,4 +92,13 @@
     height: 25px;
     
     
+}
+
+.comments-div{
+    background-color:blue;
+    
+}
+
+.likes-div{
+    background-color: red;
 }

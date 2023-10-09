@@ -8,7 +8,7 @@ import './css/get-likes.css'
 const GetLikes = ({postId}) => {
     const [fetchData, setFetchData] = useState([]);
     const [likesLength, setLikesLength] = useState(0);
-
+    const [show, setShow] = useState(false);
     const handleGetLikes = () => {
         console.log('handle likes');
 
@@ -141,6 +141,14 @@ const GetLikes = ({postId}) => {
         }
     }
 
+    const showOrHideAllLikes = () => {
+        if (show === true){
+            setShow(false);
+        } else {
+            setShow(true);
+        }
+    }
+
     return (
         
         
@@ -148,7 +156,7 @@ const GetLikes = ({postId}) => {
              
             
                
-                <div id = "showhide">
+                {/* <div id = "showhide">
                    
 
                     <ul> 
@@ -177,9 +185,39 @@ const GetLikes = ({postId}) => {
                                 </ul>
 
                 </div>
+                 */}
+                {show ? <div id = "showhide">
+                   
 
-                <button onClick = {showHideLikes}> Show Likes </button>
-           
+                   <ul> 
+                                       
+                                       <button> 
+                                               
+                                       </button>
+                                       {
+                                           
+                                           fetchData.map((data, index) => {
+                                               
+                                               return (
+                                                   <div>
+                                                       <div key = {index}>
+                                                           <div className = "commentItem" > Comment: {data}</div> 
+                                                       
+                                                       </div>
+                                                       
+                                                   </div>
+                                                   
+                                                   
+                                               )
+                                           })
+                                           
+                                       }
+                               </ul>
+
+               </div> : null}
+
+                <button onClick = {showOrHideAllLikes}> Show Likes </button>
+                
             <button className = "likeButton" onClick = {handleLike}> Like the post </button> 
             <button className = "unlikeButton" onClick = {handleUnlike}> Unlike the post </button> 
             
