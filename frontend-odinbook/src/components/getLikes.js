@@ -217,10 +217,12 @@ const GetLikes = ({postId}) => {
                </div> : null}
 
                 <button onClick = {showOrHideAllLikes}> Show Likes </button>
-                
-            <button className = "likeButton" onClick = {handleLike}> Like the post </button> 
-            <button className = "unlikeButton" onClick = {handleUnlike}> Unlike the post </button> 
+            {/* <div>
+                <button className = "likeButton" onClick = {handleLike}> Like the post </button> 
+                <button className = "unlikeButton" onClick = {handleUnlike}> Unlike the post </button> 
+            </div> */}
             
+           
         </div>
        
 

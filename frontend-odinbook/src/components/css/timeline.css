@@ -40,8 +40,8 @@
     
     align-items:center;
     flex-direction:column;
-    margin-bottom: 100px;
-    background-color: white;
+    margin: 25px 0px;
+    background-color: #FFFFFF;
     border-radius:10px;
 }
 
@@ -73,7 +73,7 @@
 
 .post-content{
     /* background-color:lightcoral; */
-    border: 1px solid black;
+    border: 2px solid #DDDFE2;
     width:725px;
     height: 400px;
     text-align:left;
@@ -102,3 +102,19 @@
 .likes-div{
     background-color: red;
 }
+
+.components-wrapper{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin:25px;
+    background-color:green;
+    width: 700px;
+
+}
+
+.create-comment, .comments-div, .likes-div{
+    margin-top: 10px;
+    
+}
+

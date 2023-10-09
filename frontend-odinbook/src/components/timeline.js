@@ -163,21 +163,21 @@ const Timeline = () => {
                             POST CONTENT {data.message}
                         </div>
 
-                      
-                      
-
-                        <div className = "create-comment">
-                            <CreateComment postId = {data._id}/>
-                        </div>
+                    <div className = "create-comment">
+                        <CreateComment className = "test1" postId = {data._id}/>
+                    </div>
+                      <div className = "components-wrapper">
+                            
+                            
+                            <div className = "comments-div">
+                                <Comment postId = {data._id} />
+                            </div>
+                            
+                            <div className = "likes-div">
+                                <GetLikes postId = {data._id} />
+                            </div>
                         
-                        <div className = "comments-div">
-                            <Comment postId = {data._id} />
                         </div>
-                        
-                        <div className = "likes-div">
-                            <GetLikes postId = {data._id} />
-                        </div>
-                        
                         
                     </div>
                     
