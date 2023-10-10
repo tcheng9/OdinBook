@@ -124,12 +124,16 @@ const Comment = ({postId}) => {
                         {
                             fetchData.map((data, index) => {
                                 return (
-                                    <div key = {data._id}>
-                                        <div className = "commentItem"> {data.text}</div>
-                                        <button onClick = {deleteComment} id = {data._id}>
-                                            Delete this comment
-                                        </button>
+                                    <div className = "popup-comments-wrapper">
+                                        <div key = {data._id} className = "comments-wrapper">
+                                            <div className = "comment-item"> {data.text}</div>
+                                            <button onClick = {deleteComment} id = {data._id} className = "delete-comment-button">
+                                                Delete this comment
+                                            </button>
+                                            <button onClick = {showOrHideAllComments} className = "comments-show-hide-button"> Show/Hide Comments </button>
+                                        </div>
                                     </div>
+                                    
                                 )
                             })
                             
@@ -137,7 +141,11 @@ const Comment = ({postId}) => {
                         
                     </div> : null
                 }
-                <button onClick = {showOrHideAllComments}> Show Comments </button>
+                <div className = "comments-showhide-wrapper">
+                    <p className = "comments-counter"> Comments: {commentsLength} </p>
+                    <button onClick = {showOrHideAllComments} className = "comments-show-hide-button"> Show/Hide Comments </button>
+                </div>
+
             </div>
         </div>
     )

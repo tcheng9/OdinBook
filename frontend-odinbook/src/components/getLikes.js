@@ -127,20 +127,7 @@ const GetLikes = ({postId}) => {
 
 
     //Testing how to show/hide a likes div that provides a list of all divs
-    let showhidediv = document.getElementById('showhide');
-    let display = 0;
-   
-    const showHideLikes = () => {
-        
-        if (display === 1){
-            showhidediv.style.display = 'block';
-            display = 0;
-        } else {
-            showhidediv.style.display = 'none';
-            display = 1;
-        }
-    }
-
+    
     const showOrHideAllLikes = () => {
         if (show === true){
             setShow(false);
@@ -187,36 +174,30 @@ const GetLikes = ({postId}) => {
                 </div>
                  */}
                 {show ? <div id = "showhide">
-                   
-
-                   <ul> 
-                                       
-                                       <button> 
-                                               
-                                       </button>
-                                       {
-                                           
-                                           fetchData.map((data, index) => {
-                                               
-                                               return (
-                                                   <div>
-                                                       <div key = {index}>
-                                                           <div className = "commentItem" > Comment: {data}</div> 
-                                                       
-                                                       </div>
-                                                       
-                                                   </div>
-                                                   
-                                                   
-                                               )
-                                           })
-                                           
-                                       }
-                               </ul>
+                    <ul> 
+                        {
+                            fetchData.map((data, index) => {       
+                                return (
+                                    <div className = "popup-likes-showhide-wrapper">
+                                        <div className = "likes-showhide-wrapper" key = {index}>
+                                            <button onClick = {showOrHideAllLikes} className = 'likes-showhide-button'> Show Likes </button>
+                                            <div className = "likes-item" > Likes: {data}</div> 
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                )
+                            })                            
+                        }
+                    </ul>
 
                </div> : null}
 
-                <button onClick = {showOrHideAllLikes}> Show Likes </button>
+                <div className = "likes-wrapper">
+                    <div> Likes count: {likesLength} </div>
+                    <button onClick = {showOrHideAllLikes} className = 'likes-showhide-button'> Show Likes </button>
+                </div>
+                
             {/* <div>
                 <button className = "likeButton" onClick = {handleLike}> Like the post </button> 
                 <button className = "unlikeButton" onClick = {handleUnlike}> Unlike the post </button> 
