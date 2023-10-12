@@ -2,7 +2,7 @@ import React from 'react';
 import {useNavigate} from "react-router-dom";
 import {useState} from 'react';
 import jwt_decode from "jwt-decode";
-
+import './css/createprofile.css';
 const CreateProfile = () => {
 
     const testForm = new FormData();
@@ -94,39 +94,45 @@ const CreateProfile = () => {
     
 
     return (
-        <div>
-            <h1> Create profile page </h1>
-          <div>
-            <form id = "createpost" method = "post" encType = "multipart/form-data">
+        <div className = "createprofile-wrapper">
+        
+          
+            <form id = "createpost" method = "post" encType = "multipart/form-data" className = "createprofile-form">
+                {/* Unsure why is "createpost" -> fix later and test */}
                 <h1> Create a profile </h1>
 
-                <label htmlFor = "age"> Profile age</label> <br/>
-                <input onChange={(e) => handlePost(e)} value = {formData.age} type = "number" id = "age" name = "age"/> <br/>
+              
+                <input onChange={(e) => handlePost(e)} value = {formData.age} type = "number" id = "age" name = "age" placeholder = "Age" />
 
-                <label htmlFor = "gender"> gender</label> <br/>
-                <input onChange={(e) => handlePost(e)} value = {formData.gender} type = "text" id = "gender" name = "gender"/> <br/>
-
-
-                <label htmlFor = "worstTravelExp"> Worst travel experience?</label> <br/>
-                <input onChange={(e) => handlePost(e)} value = {formData.worstTravelExp} type = "text" id = "worstTravelExp" name = "worstTravelExp"/> <br/>
+               
+                <input onChange={(e) => handlePost(e)} value = {formData.gender} type = "text" id = "gender" name = "gender" placeholder = "Gender" /> 
 
 
-                <label htmlFor = "designTVShow"> Design a TV show  </label> <br/>
-                <input onChange={(e) => handlePost(e)} value = {formData.designTVShow} type = "text" id = "designTVShow" name = "designTVShow"/> <br/>
+              
+                <input onChange={(e) => handlePost(e)} value = {formData.worstTravelExp} type = "text" id = "worstTravelExp" name = "worstTravelExp" 
+                    placeholder = "Worst travel experience?"
+                /> 
 
 
-                <label htmlFor = "superpower"> What super do you want?</label> <br/>
-                <input onChange={(e) => handlePost(e)} value = {formData.superpower} type = "text" id = "superpower" name = "superpower"/> <br/>
+                <input onChange={(e) => handlePost(e)} value = {formData.designTVShow} type = "text" id = "designTVShow" name = "designTVShow"
+                    placeholder = "Design a TV show"
+                />
 
-                <label htmlFor = "profileImage"> Profile Picture </label> <br/>
-                <input onChange={(e) => handleFile(e)} type = "file" id = "profileImage" name = "profileImage"/> <br/>
+
+                <input onChange={(e) => handlePost(e)} value = {formData.superpower} type = "text" id = "superpower" name = "superpower"
+                    placeholde = "What super do you want?"
+                />
+
+                <input onChange={(e) => handleFile(e)} type = "file" id = "profileImage" name = "profileImage"
+                    placeholder = "Profile Picture"
+                />
 
 
 
 
                 <button onClick = {FormSubmit}> Create Profile </button> 
             </form>
-         </div>
+         
         
         {/* <img src = "http://localhost:3000/uploads/2022-11-24T14:02:08.399Ztree.jpeg"/> */}
         

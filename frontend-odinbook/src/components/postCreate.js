@@ -2,7 +2,7 @@ import React from 'react';
 import {useNavigate} from "react-router-dom";
 import {useState} from 'react';
 import jwt_decode from "jwt-decode";
-
+import './css/create-post.css';
 const PostCreate = () => {
 
     //Creating function to navigate to timeline page
@@ -61,18 +61,22 @@ const PostCreate = () => {
     }
 
     return (
-        <div>
-            <form id = "createpost">
-                <h1> Create a post </h1>
-
-                <label htmlFor = "title"> Post Title </label> <br/>
-                <input onChange={(e) => handlePost(e)} value = {formData.title} type = "text" id = "title" name = "title"/> <br/>
-
-                <label htmlFor = "message"> message </label> <br/>
-                <input onChange={(e) => handlePost(e)} value = {formData.message} type = "text" id = "message" name = "message"/> <br/>
+        <div className = "createpost-wrapper">
+            <form className = "createpost-form" id = "createpost">
+                <h1 className = "createpost-title"> Create a post </h1>
 
                 
-                <button onClick = {formSubmit}> Create Post </button> 
+                <div className = "createpost-input-wrapper">
+                    {/* <label htmlFor = "title"> Post Title </label> <br/> */}
+                     <input onChange={(e) => handlePost(e)} value = {formData.title} type = "text" id = "title" name = "title" placeholder ="Post Title" /> <br/>
+
+                    {/* <label htmlFor = "message"> message </label> <br/> */}
+                    <input onChange={(e) => handlePost(e)} value = {formData.message} type = "text" id = "message" name = "message" placeholder = "Post Content" /> <br/>
+
+                </div>
+               
+                
+                <button className = "submitpost-btn" onClick = {formSubmit}> Create Post </button> 
             </form>
         </div>
     )
