@@ -1,14 +1,23 @@
 .likes-wrapper{
-    background-color: lightpink;
+    
     display:flex;
     justify-content: space-evenly;
     
 }
 
+
 .likes-showhide-button{
-    background-color: green;
-    background: transparent;
-    color: red;
+
+    border: 0px solid black;    
+    background-color:transparent;
+    color: black;
+}
+
+.likes-showhide-button:hover{
+    background-color: #DDDFE2;
+    /* color: #0866FF; */
+    
+    
 }
 
 
@@ -19,14 +28,20 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: lightgrey;
+    background-color: #DDDFE2;
+    
+
 }
 
 .likes-showhide-wrapper{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
     position: absolute;
     top: 50%;
     left: 50%;
-    background-color: lightblue;
+    background-color: #FFFFFF;
     transform: translate(-50%, -50%);
     width: 50%;
     height: 50%;

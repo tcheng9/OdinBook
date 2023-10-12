@@ -35,19 +35,27 @@
     background-color:none;
     background: transparent;
     color:black;
-    border: 1px solid red;
+    border: 0px solid black;
     
 }
 
+
+.comments-show-hide-button:hover{
+    background-color: #DDDFE2;
+    /* color: #0866FF; */
+    
+}
+
+
 .comments-showhide-wrapper{
-    background-color:salmon;
+    background-color:#FFFFFF;;
     
 }
 
 .comments-showhide-wrapper{
     display:flex;
     justify-content: space-evenly;
-    height:25px;
+    /* height:25px; */
 }
 
 /* Styling comments popup to cover everything and be in center of the page */
@@ -56,7 +64,7 @@
     position: absolute;
     left:0;
     top:0;
-    background-color: lightgreen;
+    background-color: #DDDFE2;
     width: 100%;
     height:100%;
 }
@@ -67,7 +75,12 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: lightgrey;
+    background-color: #FFFFFF;
     width: 50%;
     height: 50%;
+    
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
 }

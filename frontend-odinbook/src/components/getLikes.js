@@ -194,7 +194,7 @@ const GetLikes = ({postId}) => {
                </div> : null}
 
                 <div className = "likes-wrapper">
-                    <div> Likes count: {likesLength} </div>
+                    <div className = "likes-count"> Likes count: {likesLength} </div>
                     <button onClick = {showOrHideAllLikes} className = 'likes-showhide-button'> Show Likes </button>
                 </div>
                 

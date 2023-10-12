@@ -99,16 +99,16 @@
     
 } */
 
-.likes-div{
+/* .likes-div{
     background-color: red;
-}
+} */
 
 .components-wrapper{
     display:flex;
     flex-direction: row;
     justify-content: space-between;
     margin:25px;
-    background-color:green;
+    
     width: 100%;
 
 }
