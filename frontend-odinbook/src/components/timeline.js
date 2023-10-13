@@ -104,7 +104,7 @@ const Timeline = () => {
             <header className = "timeline-header">
 
                     <div className = "header-wrapper">
-                        Logo
+                        OdinBook
                     </div>
                     
                     <div className = "header-wrapper">
@@ -135,10 +135,10 @@ const Timeline = () => {
                
             </header>
            
-            <div>
+            {/* <div>
                 Current user id - remove later: {userId}
             </div>
-            
+             */}
             <div className = "all-post-wrapper">
 
             
@@ -147,12 +147,12 @@ const Timeline = () => {
                 return (
                     <div key = {data._id} className = "single-post-wrapper">
                         <div className = "post-header-wrapper">
-                            
-                            <h1 className = "post-title"> AACTUALLY THIS NEEDS TO BE USER ID, NOT TITLE: {data.title}</h1>
-                        
+                            {/* post title should actually be username but don't have time to resolve atm */}
+                            <h1 className = "post-title"> Post Title: {data.title} </h1>
+
                             <div className = "header-child-wrapper">
-                                    <p> (PLACEHOLDER) this will display time </p>
-                                <button onClick = {deletePost} id = {data._id}>
+                                    <p> {data.timestamp} </p>
+                                <button className = "delete-post-btn" onClick = {deletePost} id = {data._id}>
                                     Delete this post
                                 </button>
                             </div>

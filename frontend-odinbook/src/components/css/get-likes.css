@@ -8,14 +8,17 @@
 
 .likes-showhide-button{
 
-    border: 1px solid green;    
-    background-color:transparent;
-    color: black;
+    background-color:none;
+    background: transparent;
+    color:black;
+    border: 1px solid #DDDFE2;
 }
 
 .likes-showhide-button:hover{
-    background-color: #DDDFE2;
-    /* color: #0866FF; */
+    color:white;
+    background-color:limegreen;
+    border: 1px solid #DDDFE2;
+
     
     
 }
@@ -49,3 +52,31 @@
 }
 
 
+
+.likeButton{
+    color: black;
+    background-color: #FFFFFF;
+    border: 3px double #0866FF;
+
+}
+
+.likeButton:hover{
+    color:white;
+    background-color:limegreen;
+    border: 1px solid #DDDFE2;
+
+}
+
+.unlikeButton{
+    color: black;
+    background-color: #FFFFFF;
+    border: 3px double #0866FF;
+
+}
+
+.unlikeButton:hover{
+    color:white;
+    background-color:red;
+    border: 1px solid #DDDFE2;
+
+}

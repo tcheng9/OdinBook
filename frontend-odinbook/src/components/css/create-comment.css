@@ -1,0 +1,13 @@
+.submit-comment-button{
+    color: black;
+    background-color: #FFFFFF;
+    border: 3px double #0866FF;
+ 
+}
+
+.submit-comment-button:hover{
+    color:white;
+    background-color:limegreen;
+    border: 1px solid #DDDFE2;
+
+}

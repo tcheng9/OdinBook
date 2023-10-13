@@ -35,14 +35,16 @@
     background-color:none;
     background: transparent;
     color:black;
-    border: 0px solid black;
+    border: 1px solid #DDDFE2;
     
 }
 
 
 .comments-show-hide-button:hover{
-    background-color: #DDDFE2;
-    /* color: #0866FF; */
+    color:white;
+    background-color:limegreen;
+    border: 1px solid #DDDFE2;
+
     
 }
 
@@ -83,4 +85,20 @@
     align-items:center;
     justify-content:center;
     flex-direction:column;
+}
+
+
+.delete-comment-button{
+    color: black;
+    background-color: #FFFFFF;
+    border: 3px double #0866FF;
+
+}
+
+.delete-comment-button:hover{
+    color:white;
+    background-color:red;
+    border: 1px solid #DDDFE2;
+
+
 }

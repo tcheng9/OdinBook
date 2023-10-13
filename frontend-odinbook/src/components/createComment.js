@@ -58,7 +58,7 @@ const CreateComment = ({postId}) => {
             <form className = "commentForm" onSubmit={(e) => handleCommentCreate(e)} id={postId} >
                 <div>
                     <input claasName = "commentInput" name = "comment" type = "text" className = "commentInput" placeholder = "Write a comment" />
-                    <button className = "commentButton"> Comment Send </button>
+                    <button className = "submit-comment-button"> Comment Send </button>
                 </div>
                 
             </form>

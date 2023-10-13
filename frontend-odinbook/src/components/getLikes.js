@@ -27,15 +27,9 @@ const GetLikes = ({postId}) => {
             .then(data => {
                 setFetchData(data.likes);
                 setLikesLength(data.likes.length);
-             
-                // console.log('likes data:');
-                // if(data.likes.length != 0){
-                //     console.log('andlkandsa')
-                //     console.log(data.likes.length);
-                // } else {
-                //     continue;
-                // }
-                // console.log(data.likes);
+                // console.log('likes data');
+                // console.log(data);
+          
             })
             
             

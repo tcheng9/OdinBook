@@ -139,7 +139,8 @@ const Comment = ({postId}) => {
                             
                         }
                         
-                    </div> : null
+                    </div> : null 
+
                 }
                 <div className = "comments-showhide-wrapper">
                     <p className = "comments-counter"> Comments: {commentsLength} </p>

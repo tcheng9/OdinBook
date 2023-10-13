@@ -27,6 +27,8 @@
     display:flex;
     color:#0866FF;
     padding:15px;
+    font-weight: 700;
+    font-size: 24px;
 }
 
 
@@ -126,4 +128,18 @@
 .likes-div{
     width: 50%;
     
+}
+
+
+/* delete post btn styling */
+.delete-post-btn{
+    color: black;
+    background-color: #FFFFFF;
+    border: 3px double #0866FF;
+}
+
+.delete-post-btn:hover{
+    color:white;
+    background-color:limegreen;
+    border: 1px solid #DDDFE2;
 }
