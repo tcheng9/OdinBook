@@ -40,7 +40,7 @@ function Login(){
             }
         
             
-            fetch('http://localhost:3000/auth/login', requestOptions)
+            fetch('https://test-deploy-1.fly.dev/auth/login', requestOptions)
             .then((response) => response.json())
             .then((data) => {
             console.log(data.accessToken);

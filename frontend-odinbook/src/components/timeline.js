@@ -44,7 +44,7 @@ const Timeline = () => {
     }, [])
     
     const postList = async () => {
-        const response = await fetch("http://localhost:4000/posts");
+        const response = await fetch("https://test-deploy-1.fly.dev/posts");
         setPostData(await response.json());
     }
   
@@ -59,7 +59,7 @@ const Timeline = () => {
     
     //Fetch call to delete a post by postId
     const deletePostAPICall = async(postId)=> {
-        fetch('http://localhost:4000/posts/' + postId, {
+        fetch('https://test-deploy-1.fly.dev/' + postId, {
             method:'DELETE',
             // headers: {
                 //Need to add access token later

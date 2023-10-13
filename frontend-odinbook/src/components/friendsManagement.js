@@ -14,7 +14,7 @@ const FriendsManagement = () => {
             method: 'GET'
         }
     
-        const url = "http://localhost:4000/auth";
+        const url = "https://test-deploy-1.fly.dev/auth";
         
         fetch(url, requestOptions)
         .then((response => response.json()))
@@ -43,7 +43,7 @@ const FriendsManagement = () => {
     
     //API call to send a pending friend request
     const sendPendingRequest = (userId, targetId) => {
-        const url = "http://localhost:4000/friends/pending/" + userId + "/" + targetId
+        const url = "https://test-deploy-1.fly.dev/friends/pending/" + userId + "/" + targetId
         const fetchSettings = {
             method: "POST",
             headers: {
@@ -72,7 +72,7 @@ const FriendsManagement = () => {
 ///////////////////////////////////////////////////////////////////////////////////////////////////
     //API call to accept a friend request
     const acceptFriendRequest = (userId, targetId) => {
-        const url = "http://localhost:4000/friends/accepted/" + userId + "/" + targetId
+        const url = "https://test-deploy-1.fly.dev/friends/accepted/" + userId + "/" + targetId
         const fetchSettings = {
             method: "POST",
             headers: {
@@ -94,7 +94,7 @@ const FriendsManagement = () => {
 ///////////////////////////////////////////////////////////////////////////////////////////////////
     //API call to unfriend a person
     const unfriendingFunction = (userId, targetId) => {
-        const url = "http://localhost:4000/friends/delete/" + userId + "/" + targetId
+        const url = "https://test-deploy-1.fly.dev/friends/delete/" + userId + "/" + targetId
         const fetchSettings = {
             method: "POST",
             headers: {

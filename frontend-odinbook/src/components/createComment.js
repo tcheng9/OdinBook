@@ -43,7 +43,7 @@ const CreateComment = ({postId}) => {
                 })
             }
 
-            fetch("http://localhost:4000/comments/create", fetchSettings);
+            fetch("https://test-deploy-1.fly.dev/comments/create", fetchSettings);
             
         } catch (err){
             console.log(err);

@@ -15,7 +15,7 @@ const DisplayProfiles = () => {
         }
 
 
-        fetch('http://localhost:3000/profile', requestOptions)
+        fetch('https://test-deploy-1.fly.dev/profile', requestOptions)
             .then((response) => response.json())
             .then((data) => {
                 setUsers(data);
@@ -37,7 +37,7 @@ const DisplayProfiles = () => {
                 {
                     users.map((data) => {
 
-                        const url = "http://localhost:3001/profiles/" + data.userId._id;
+                        const url = "https://test-deploy-1.fly.dev/profiles/" + data.userId._id;
 
                         return (
                             <div key = {data._id}>

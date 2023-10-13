@@ -83,7 +83,7 @@ const CreateProfile = () => {
 
         }
 
-        const apiUrl = 'http://localhost:4000/profile/create/' + userIdToken;
+        const apiUrl = 'https://test-deploy-1.fly.dev/profile/create/' + userIdToken;
 
         fetch(apiUrl, requestOptions).then((response) => console.log('responding'))
         .then((data) => {

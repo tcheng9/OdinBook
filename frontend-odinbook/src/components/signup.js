@@ -40,7 +40,7 @@ function Signup(){
         console.log(data);
         
 
-        fetch('http://localhost:3000/auth/signup', requestOptions)
+        fetch('https://test-deploy-1.fly.dev/auth/signup', requestOptions)
         .then((data) => {
             console.log(data);
         })

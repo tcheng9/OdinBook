@@ -19,7 +19,7 @@ const DynamicProfiles = ({postId}) => {
             method: 'GET',
         }
 
-        const fetchUrl = 'http://localhost:4000/profile/create/' + id;
+        const fetchUrl = 'https://test-deploy-1.fly.dev/profile/create/' + id;
 
         fetch(fetchUrl, requestOptions)
             .then((response) => response.json())
@@ -45,7 +45,7 @@ const DynamicProfiles = ({postId}) => {
                     {
                         profileInfo.map((data) => {
                             
-                            const imgUrl = 'http://localhost:4000/' + data.profileImage
+                            const imgUrl = 'https://test-deploy-1.fly.dev/' + data.profileImage
 
                             return(
                                 <div key ={data._id}>

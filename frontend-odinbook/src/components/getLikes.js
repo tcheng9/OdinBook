@@ -20,7 +20,7 @@ const GetLikes = ({postId}) => {
                 }
             }
 
-            const postUrl = "http://localhost:4000/posts/" + postId + "/likes?userId=${userId}";
+            const postUrl = "https://test-deploy-1.fly.dev/posts/" + postId + "/likes?userId=${userId}";
 
             fetch(postUrl, fetchSettings)
             .then(response => response.json())
@@ -75,7 +75,7 @@ const GetLikes = ({postId}) => {
             
             console.log(userId);
 
-            const postUrl = "http://localhost:4000/posts/" + postId + "/likes?userId=${userId}";
+            const postUrl = "https://test-deploy-1.fly.dev/posts/" + postId + "/likes?userId=${userId}";
             
             fetch(postUrl, fetchSettings);
             
@@ -107,7 +107,7 @@ const GetLikes = ({postId}) => {
             
             console.log(userId);
 
-            const postUrl = "http://localhost:4000/posts/" + postId + "/unlike";
+            const postUrl = "https://test-deploy-1.fly.dev/posts/" + postId + "/unlike";
             console.log(postUrl);
             fetch(postUrl, fetchSettings);
             

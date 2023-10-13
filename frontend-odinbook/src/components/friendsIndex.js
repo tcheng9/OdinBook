@@ -24,7 +24,7 @@ const FriendsIndex = ({postId}) => {
         method: 'GET'
     }
 
-    const url = "http://localhost:4000/auth";
+    const url = "https://test-deploy-1.fly.dev/auth";
 
     fetch(url, requestOptions)
     .then((response => response.json()))
@@ -46,7 +46,7 @@ const FriendsIndex = ({postId}) => {
         method: 'GET'
     }
 
-    const url = "http://localhost:4000/friends/pending";
+    const url = "https://test-deploy-1.fly.dev/friends/pending";
     
 
     fetch(url, requestOptions)
@@ -63,7 +63,7 @@ const FriendsIndex = ({postId}) => {
         method: 'GET'
     }
 
-    const url = "http://localhost:4000/friends/accepted";
+    const url = "https://test-deploy-1.fly.dev/friends/accepted";
 
     fetch(url, requestOptions)
     .then((response => response.json()))
@@ -82,7 +82,7 @@ const FriendsIndex = ({postId}) => {
 
   return (
     <div>
-        <a href = "http://localhost:3000/auth/facebook"> Facebook Login </a> 
+        <a href = "https://test-deploy-1.fly.dev/auth/facebook"> Facebook Login </a> 
 
         {
            usersList.map((data) => {

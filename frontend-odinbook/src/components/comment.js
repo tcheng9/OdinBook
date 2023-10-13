@@ -18,7 +18,7 @@ const Comment = ({postId}) => {
                     
                 }
 
-                fetch(`http://localhost:4000/comments?postId=${postId}`, fetchSettings)
+                fetch(`https://test-deploy-1.fly.dev/comments?postId=${postId}`, fetchSettings)
                 .then(response => response.json())
                 .then(data => {
                     setFetchData(data);
@@ -51,7 +51,7 @@ const Comment = ({postId}) => {
         //Fetch API call to delete selected comment
 
         const deleteCommentAPICall = async(commentId)=> {
-            fetch('http://localhost:4000/comments/' + commentId, {
+            fetch('https://test-deploy-1.fly.dev/comments/' + commentId, {
                 method:'DELETE',
                 // headers: {
                     //Need to add access token later
