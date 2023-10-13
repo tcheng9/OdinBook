@@ -171,17 +171,17 @@ const GetLikes = ({postId}) => {
                                         }
                                 </ul>
 
-                </div>
-                 */}
+                </div> */}
+                
                 {show ? <div id = "showhide">
                     <ul> 
                         {
                             fetchData.map((data, index) => {       
                                 return (
-                                    <div className = "popup-likes-showhide-wrapper">
+                                    <div className = "popup-wrapper">
                                         <div className = "likes-showhide-wrapper" key = {index}>
-                                            <button onClick = {showOrHideAllLikes} className = 'likes-showhide-button'> Show Likes </button>
-                                            <div className = "likes-item" > Likes: {data}</div> 
+                                            <button onClick = {showOrHideAllLikes} className = 'likes-showhide-button'> Show/Hide Likes </button>
+                                            <div className = "likes-item" > Likes: {data} </div> 
                                             
                                         </div>
                                     </div>
@@ -196,6 +196,8 @@ const GetLikes = ({postId}) => {
                 <div className = "likes-wrapper">
                     <div className = "likes-count"> Likes count: {likesLength} </div>
                     <button onClick = {showOrHideAllLikes} className = 'likes-showhide-button'> Show Likes </button>
+                    <button className = "likeButton" onClick = {handleLike}> Like the post </button> 
+                    <button className = "unlikeButton" onClick = {handleUnlike}> Unlike the post </button> 
                 </div>
                 
             {/* <div>
